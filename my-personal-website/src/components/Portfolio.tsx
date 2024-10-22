@@ -98,9 +98,9 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent>
                 <p>
-                  I'm a passionate computer science student with a keen interest in web development and machine learning.
-                  Currently seeking part-time opportunities to apply my skills and gain industry experience. I love solving
-                  complex problems and creating innovative solutions that make a difference.
+                Hello! I'm Lee Chen Wei, also known as Luis, from Klang, Selangor, Malaysia. I'm currently a Year 3 Bachelor of Computer Science (AI) student at the University of Malaya, and I'm interning as a Software Engineer Intern at Dell Technologies in Cyberjaya.
+
+                My interests include machine learning, model training, and cybersecurity. I have participated in several hackathons, earning a few accolades along the way. I’m passionate about continuously learning new technologies to stay abreast of rapid advancements in the field. I’m also looking forward to engaging in Capture The Flag (CTF) challenges and writing about cybersecurity topics.
                 </p>
               </CardContent>
             </Card>
