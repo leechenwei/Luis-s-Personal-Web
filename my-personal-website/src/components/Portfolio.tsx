@@ -34,10 +34,28 @@ export default function Portfolio() {
       techs: ['ReactNative', 'Javascript', 'Firebase']
     },
     {
+      title: 'TryHackMe Cybersecurity Lab Write-up',
+      description: 'List of TryHackMe Labs Guidence and Walkthrough',
+      link: 'https://github.com/leechenwei/TryHackMe',
+      techs: ['Offensive Security', 'Kali Linux', 'Burp Suite','Linux CLI']
+    },
+    {
       title: 'Stroke Risk Predictor',
       description: 'A brief description of project 3',
       link: 'https://github.com/leechenwei/Stroke-Risk-Predictor',
       techs: ['R', 'Machine Learning', 'Kaggle']
+    },
+    {
+      title: 'Manual Network Threat Detection System',
+      description: 'This application allows users to input various network traffic features and then predicts the risk level associated with the given network traffic using the trained model.',
+      link: 'https://github.com/leechenwei/Manual-Network-Threat-Detection-System',
+      techs: ['Python', 'Machine Learning', 'Kaggle','Tkinter']
+    },
+    {
+      title: 'Simple Dashboard Website',
+      description: 'A simple dashboard website builded with HTML, CSS, JS, PHP and MySQL',
+      link: 'https://github.com/leechenwei/Simple-Dashboard-Website',
+      techs: ['HTML', 'CSS', 'Javascript','PHP','MySQL']
     },
   ]
 
