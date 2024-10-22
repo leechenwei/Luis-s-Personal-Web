@@ -11,7 +11,7 @@ import lcwImage from '../app/images/LCW.jpeg'
 
 export default function Portfolio() {
   const personalInfo = {
-    name: 'Lee Chen Wei(Luis)',
+    name: 'Lee Chen Wei (Luis)',
     title: 'Year 3 Computer Science Student at University Malaya',
     email: 'LuisLCW02@gmail.com',
     github: 'https://github.com/leechenwei',
@@ -24,49 +24,29 @@ export default function Portfolio() {
       title: 'UMHack-2023 Pregnancy App',
       description: 'A brief description of project 1',
       link: 'https://github.com/yiwan-21/umh23-pregnancy',
-      techs: ['Dart', 'Python', 'C++','Machine Learning']
+      techs: ['Dart', 'Python', 'C++', 'Machine Learning'],
     },
     {
       title: 'FinFreedom',
-      description: 'FinFreedom is a cutting-edge financial management app designed to empower users to take control of their financial future. Developed with the mission to enhance financial literacy and promote responsible financial practices, FinFreedom offers a comprehensive suite of tools and features to guide users on their journey towards financial freedom. With AI-driven budgeting, investment insights, and a reward system, FinFreedom makes managing finances easy and rewarding. Our subscription model offers premium features, while B2B partnerships and advertising generate revenue. Stand out with FinFreedom and unlock your path to financial freedom today.      ',
+      description: 'FinFreedom is a cutting-edge financial management app designed to empower users to take control of their financial future. Developed with the mission to enhance financial literacy and promote responsible financial practices, FinFreedom offers a comprehensive suite of tools and features to guide users on their journey towards financial freedom. With AI-driven budgeting, investment insights, and a reward system, FinFreedom makes managing finances easy and rewarding. Our subscription model offers premium features, while B2B partnerships and advertising generate revenue. Stand out with FinFreedom and unlock your path to financial freedom today.',
       link: 'https://github.com/SJWONG27/FinFreedom',
-      techs: ['ReactNative', 'Javascript', 'Firebase']
+      techs: ['ReactNative', 'Javascript', 'Firebase'],
     },
     {
       title: 'Stroke Risk Predictor',
       description: 'A brief description of project 3',
       link: 'https://github.com/leechenwei/Stroke-Risk-Predictor',
-      techs: ['R','Machine Learning','Kaggle']
+      techs: ['R', 'Machine Learning', 'Kaggle'],
     },
   ]
 
   const awards = [
     { title: 'Dell Hack2Hire Honorable Mention Award', year: '2022' },
     { title: 'UMHackathon 2023 Second-Runner Up Domain: Healthcare', year: '2021' },
-    { title: 'Y2S2 Dean\'List', year: '2024' },
-    { title: 'Y2S1 Dean\'s List', year: '2023/2024' },
-    { title: 'Y1S1 Dean\'s List', year: '2022/2023' },
+    { title: 'Y2S2 Dean&apos;s List', year: '2024' },
+    { title: 'Y2S1 Dean&apos;s List', year: '2023/2024' },
+    { title: 'Y1S1 Dean&apos;s List', year: '2022/2023' },
   ]
-
-  const [visibleProjects, setVisibleProjects] = useState<string[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setVisibleProjects((prev) => [...prev, entry.target.id]);
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-
-    const projectElements = document.querySelectorAll('.project-card');
-    projectElements.forEach(project => observer.observe(project));
-
-    return () => {
-      projectElements.forEach(project => observer.unobserve(project));
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-500 to-green-500 dark:from-blue-900 dark:via-cyan-900 dark:to-green-900 py-8">
@@ -79,7 +59,7 @@ export default function Portfolio() {
                 alt={personalInfo.name}
                 layout='fill'
                 objectFit="cover"
-                style = {{transform: 'scale(2.5)'}}
+                style={{ transform: 'scale(2.5)' }}
               />
             </div>
           </div>
@@ -152,7 +132,6 @@ export default function Portfolio() {
             </div>
           </TabsContent>
 
-
           <TabsContent value="awards" className="mt-6">
             <Card className="bg-white bg-opacity-10 backdrop-blur-md text-white border-none transition-transform transform hover:scale-105">
               <CardHeader>
@@ -178,7 +157,7 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent>
                 <p>You can view or download my resume using the button below:</p>
-              </CardContent>  
+              </CardContent>
               <CardFooter>
                 <Button variant="secondary" asChild>
                   <a href="https://drive.google.com/file/d/1IxwMkFKlixoO_QoJBZDW8WoyllBVOc9O/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="transition-transform transform hover:scale-110">
