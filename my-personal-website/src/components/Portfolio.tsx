@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Github, Linkedin, Mail, ExternalLink, Award, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
@@ -24,19 +24,19 @@ export default function Portfolio() {
       title: 'UMHack-2023 Pregnancy App',
       description: 'A brief description of project 1',
       link: 'https://github.com/yiwan-21/umh23-pregnancy',
-      techs: ['Dart', 'Python', 'C++', 'Machine Learning'],
+      techs: ['Dart', 'Python', 'C++', 'Machine Learning']
     },
     {
       title: 'FinFreedom',
       description: 'FinFreedom is a cutting-edge financial management app designed to empower users to take control of their financial future. Developed with the mission to enhance financial literacy and promote responsible financial practices, FinFreedom offers a comprehensive suite of tools and features to guide users on their journey towards financial freedom. With AI-driven budgeting, investment insights, and a reward system, FinFreedom makes managing finances easy and rewarding. Our subscription model offers premium features, while B2B partnerships and advertising generate revenue. Stand out with FinFreedom and unlock your path to financial freedom today.',
       link: 'https://github.com/SJWONG27/FinFreedom',
-      techs: ['ReactNative', 'Javascript', 'Firebase'],
+      techs: ['ReactNative', 'Javascript', 'Firebase']
     },
     {
       title: 'Stroke Risk Predictor',
       description: 'A brief description of project 3',
       link: 'https://github.com/leechenwei/Stroke-Risk-Predictor',
-      techs: ['R', 'Machine Learning', 'Kaggle'],
+      techs: ['R', 'Machine Learning', 'Kaggle']
     },
   ]
 
@@ -157,7 +157,7 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent>
                 <p>You can view or download my resume using the button below:</p>
-              </CardContent>
+              </CardContent>  
               <CardFooter>
                 <Button variant="secondary" asChild>
                   <a href="https://drive.google.com/file/d/1IxwMkFKlixoO_QoJBZDW8WoyllBVOc9O/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="transition-transform transform hover:scale-110">
