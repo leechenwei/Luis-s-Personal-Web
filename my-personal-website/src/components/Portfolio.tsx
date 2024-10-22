@@ -41,8 +41,9 @@ export default function Portfolio() {
   ]
 
   const awards = [
-    { title: 'Dell Hack2Hire Honorable Mention Award', year: '2022' },
-    { title: 'UMHackathon 2023 Second-Runner Up Domain: Healthcare', year: '2021' },
+    { title: 'Dell Hack2Hire Honorable Mention Award', year: '2023' },
+    { title: 'UMHackathon 2023 Second-Runner Up Domain: Healthcare', year: '2023' },
+    { title: 'Programming League National 2023 University Malaya Second-Runner Up (Competitive Programming)', year: '2023'},
     { title: 'Y2S2 Dean\'s List', year: '2024' }, // Escape single quote
     { title: 'Y2S1 Dean\'s List', year: '2023/2024' }, // Escape single quote
     { title: 'Y1S1 Dean\'s List', year: '2022/2023' }, // Escape single quote
