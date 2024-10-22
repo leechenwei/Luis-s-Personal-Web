@@ -43,10 +43,11 @@ export default function Portfolio() {
   const awards = [
     { title: 'Dell Hack2Hire Honorable Mention Award', year: '2022' },
     { title: 'UMHackathon 2023 Second-Runner Up Domain: Healthcare', year: '2021' },
-    { title: 'Y2S2 Dean&apos;s List', year: '2024' },
-    { title: 'Y2S1 Dean&apos;s List', year: '2023/2024' },
-    { title: 'Y1S1 Dean&apos;s List', year: '2022/2023' },
-  ]
+    { title: 'Y2S2 Dean\'s List', year: '2024' }, // Escape single quote
+    { title: 'Y2S1 Dean\'s List', year: '2023/2024' }, // Escape single quote
+    { title: 'Y1S1 Dean\'s List', year: '2022/2023' }, // Escape single quote
+  ];
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-500 to-green-500 dark:from-blue-900 dark:via-cyan-900 dark:to-green-900 py-8">
