@@ -17,6 +17,7 @@ export default function Portfolio() {
     github: 'https://github.com/leechenwei',
     linkedin: 'https://www.linkedin.com/in/luislcw02/',
     photoUrl: lcwImage,
+    internship: 'Currently Intern @ Dell Technologies Malaysia as Software Engineer Intern', // Add this line
   }
 
   const projects = [
@@ -67,6 +68,7 @@ export default function Portfolio() {
           </div>
           <h1 className="text-4xl font-bold mb-2 text-white animate-fade-in">{personalInfo.name}</h1>
           <p className="text-xl text-white mb-4">{personalInfo.title}</p>
+          <p className="text-lg text-white mb-4">{personalInfo.internship}</p>
           <div className="flex justify-center space-x-4">
             {[
               { href: personalInfo.github, icon: <Github className="h-4 w-4" />, label: 'GitHub' },
