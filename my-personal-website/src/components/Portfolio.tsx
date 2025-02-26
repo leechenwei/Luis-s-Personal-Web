@@ -12,15 +12,21 @@ import lcwImage from '../app/images/LCW.jpeg'
 export default function Portfolio() {
   const personalInfo = {
     name: 'Lee Chen Wei (Luis)',
-    title: 'Year 3 Computer Science Student at University Malaya',
+    title: 'Final Year Computer Science Student at University Malaya',
     email: 'LuisLCW02@gmail.com',
     github: 'https://github.com/leechenwei',
     linkedin: 'https://www.linkedin.com/in/luislcw02/',
     photoUrl: lcwImage,
-    internship: 'Currently Intern @ Dell Technologies Malaysia as Software Engineer Intern', // Add this line
+    internship: 'Ex-Intern @ Dell Technologies Malaysia as Software Engineer Intern', // Add this line
   }
 
   const projects = [
+    {
+      title: 'AI Agent Timetable Scheduler',
+      description: 'AI-powered smart timetable system for students and teachers, built with React Native, Flask, Firebase, and SambaNova Cloud API (Meta-Llama). Automates scheduling, resolves conflicts, and optimizes daily routines with AI assistance.',
+      link: 'https://github.com/leechenwei/Ai-Agent-Timetable',
+      techs: ['Python', 'React-Native', 'Flask', 'Firebase', 'API']
+    },
     {
       title: 'UMHack-2023 Pregnancy App',
       description: 'A brief description of project 1',
@@ -37,7 +43,7 @@ export default function Portfolio() {
       title: 'TryHackMe Cybersecurity Lab Write-up',
       description: 'List of TryHackMe Labs Guidence and Walkthrough',
       link: 'https://github.com/leechenwei/TryHackMe',
-      techs: ['Offensive Security', 'Kali Linux', 'Burp Suite','Linux CLI']
+      techs: ['Offensive Security', 'Kali Linux', 'Burp Suite', 'Linux CLI']
     },
     {
       title: 'Stroke Risk Predictor',
@@ -49,25 +55,19 @@ export default function Portfolio() {
       title: 'Manual Network Threat Detection System',
       description: 'This application allows users to input various network traffic features and then predicts the risk level associated with the given network traffic using the trained model.',
       link: 'https://github.com/leechenwei/Manual-Network-Threat-Detection-System',
-      techs: ['Python', 'Machine Learning', 'Kaggle','Tkinter']
-    },
-    {
-      title: 'Simple Dashboard Website',
-      description: 'A simple dashboard website builded with HTML, CSS, JS, PHP and MySQL',
-      link: 'https://github.com/leechenwei/Simple-Dashboard-Website',
-      techs: ['HTML', 'CSS', 'Javascript','PHP','MySQL']
+      techs: ['Python', 'Machine Learning', 'Kaggle', 'Tkinter']
     },
   ]
 
   const awards = [
     { title: 'Dell Hack2Hire Honorable Mention Award', year: '2023' },
     { title: 'UMHackathon 2023 Second-Runner Up Domain: Healthcare', year: '2023' },
-    { title: 'Programming League National 2023 University Malaya Second-Runner Up (Competitive Programming)', year: '2023'},
+    { title: 'Programming League National 2023 University Malaya Second-Runner Up (Competitive Programming)', year: '2023' },
     { title: 'Y2S2 Dean\'s List', year: '2024' }, // Escape single quote
     { title: 'Y2S1 Dean\'s List', year: '2023/2024' }, // Escape single quote
     { title: 'Y1S1 Dean\'s List', year: '2022/2023' }, // Escape single quote
   ];
-  
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-500 to-green-500 dark:from-blue-900 dark:via-cyan-900 dark:to-green-900 py-8">
@@ -119,10 +119,24 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent>
                 <p>
-                Hello! I'm Lee Chen Wei, also known as Luis, from Klang, Selangor, Malaysia. I'm currently a Year 3 Bachelor of Computer Science (AI) student at the University of Malaya, and I'm interning as a Software Engineer Intern at Dell Technologies in Cyberjaya.
+                  Hello! I'm <b>Lee Chen Wei</b>, also known as Luis, from Klang, Selangor, Malaysia.<br />
+                  I'm a final-year <b>Bachelor of Computer Science (AI)</b> student at the <b>University of Malaya</b>.
 
-                My interests include machine learning, model training, and cybersecurity. I have participated in several hackathons, earning a few accolades along the way. I’m passionate about continuously learning new technologies to stay abreast of rapid advancements in the field. I’m also looking forward to engaging in Capture The Flag (CTF) challenges and writing about cybersecurity topics.
+                  My interests include <b>data engineering, machine learning, model training, and cybersecurity</b>.<br />
+                  I have participated in several hackathons, earning a few accolades along the way.<br /><br />
+
+                  <b>Technical Skills:</b><br />
+                  🔹 <b>Programming:</b> Python, R, Scripting<br />
+                  🔹 <b>Web & Mobile:</b> Flask, FastAPI, Next.js, React Native, Flutter<br />
+                  🔹 <b>Databases:</b> SQL, Advanced SQL, Oracle SQL, Firebase, Database Migration<br />
+                  🔹 <b>APIs & Backend:</b> REST API, WebSockets, Third-Party API Integration<br />
+                  🔹 <b>Machine Learning:</b> Scikit-learn, TensorFlow, Model Training, Prediction<br />
+                  🔹 <b>Cybersecurity & OS:</b> Linux, Kali Linux<br /><br />
+
+                  I’m passionate about <b>learning new technologies, problem-solving, and building scalable systems</b>.<br />
+                  I’m also looking forward to engaging in Capture The Flag (CTF) challenges and writing about cybersecurity topics / Advanced SQL, ETL, Data Tools such as Apache Spark, AirFlow, SnowFlake
                 </p>
+
               </CardContent>
             </Card>
           </TabsContent>
@@ -179,7 +193,7 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent>
                 <p>You can view or download my resume using the button below:</p>
-              </CardContent>  
+              </CardContent>
               <CardFooter>
                 <Button variant="secondary" asChild>
                   <a href="https://drive.google.com/file/d/1IxwMkFKlixoO_QoJBZDW8WoyllBVOc9O/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="transition-transform transform hover:scale-110">
