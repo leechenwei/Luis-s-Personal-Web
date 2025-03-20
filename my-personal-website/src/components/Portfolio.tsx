@@ -29,7 +29,7 @@ export default function Portfolio() {
     },
     {
       title: 'UMHack-2023 Pregnancy App',
-      description: 'A brief description of project 1',
+      description: '2nd-runner-up project in UMHackathon 2023 ObGyn domain',
       link: 'https://github.com/yiwan-21/umh23-pregnancy',
       techs: ['Dart', 'Python', 'C++', 'Machine Learning']
     },
@@ -47,7 +47,7 @@ export default function Portfolio() {
     },
     {
       title: 'Stroke Risk Predictor',
-      description: 'A brief description of project 3',
+      description: 'The Stroke Risk Predictor is a machine learning tool developed using R and trained with a Random Forest model on a Kaggle dataset containing health attributes like age, hypertension, heart disease, and glucose levels. The Random Forest algorithm was chosen for its robustness, high accuracy, and ability to handle complex interactions. This predictor allows users to input their health parameters and receive a stroke risk prediction, which can aid in early detection and preventive care.',
       link: 'https://github.com/leechenwei/Stroke-Risk-Predictor',
       techs: ['R', 'Machine Learning', 'Kaggle']
     },
@@ -196,7 +196,7 @@ export default function Portfolio() {
               </CardContent>
               <CardFooter>
                 <Button variant="secondary" asChild>
-                  <a href="https://drive.google.com/file/d/1IxwMkFKlixoO_QoJBZDW8WoyllBVOc9O/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="transition-transform transform hover:scale-110">
+                  <a href="https://drive.google.com/file/d/1TrWp8wj60cj5YNSJmgS8Souy_4yf6zrv/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="transition-transform transform hover:scale-110">
                     View Resume <BookOpen className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
