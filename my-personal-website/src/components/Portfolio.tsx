@@ -196,7 +196,7 @@ export default function Portfolio() {
               </CardContent>
               <CardFooter>
                 <Button variant="secondary" asChild>
-                  <a href="https://drive.google.com/file/d/1TrWp8wj60cj5YNSJmgS8Souy_4yf6zrv/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="transition-transform transform hover:scale-110">
+                  <a href="https://drive.google.com/file/d/11GePZj-MSnrPuaIw8hm_3EWsDV9oWFe9/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="transition-transform transform hover:scale-110">
                     View Resume <BookOpen className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
