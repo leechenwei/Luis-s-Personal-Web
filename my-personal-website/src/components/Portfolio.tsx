@@ -22,6 +22,18 @@ export default function Portfolio() {
 
   const projects = [
     {
+      title: 'Weather ETL w Airflow',
+      description: 'This is a beginner-friendly ETL project built to get hands-on experience with Apache Airflow. The pipeline simulates a weather data ETL process — without using any APIs. Instead, the data is manually prepared, then processed step-by-step.',
+      link: 'https://github.com/leechenwei/Simple-ETL-w-Airflow',
+      techs: ['Python', 'postgres', 'Apache Airflow', 'Docker']
+    },
+    {
+      title: 'Stock Data Scrapper',
+      description: 'The SGX Derivatives Data Downloader is a Python script that allows users to download historical data files from the SGX (Singapore Exchange) website. It supports downloading both today\'s data and historical files for specific dates. The script provides several configuration options and robust logging to assist in troubleshooting and auditing the download process.',
+      link: 'https://github.com/leechenwei/Stock-Scrapping-Web-Scrapping-',
+      techs: ['Python', 'Cronjob', 'Selenium', 'CLI']
+    },
+    {
       title: 'AI Agent Timetable Scheduler',
       description: 'AI-powered smart timetable system for students and teachers, built with React Native, Flask, Firebase, and SambaNova Cloud API (Meta-Llama). Automates scheduling, resolves conflicts, and optimizes daily routines with AI assistance.',
       link: 'https://github.com/leechenwei/Ai-Agent-Timetable',
@@ -40,23 +52,11 @@ export default function Portfolio() {
       techs: ['ReactNative', 'Javascript', 'Firebase']
     },
     {
-      title: 'TryHackMe Cybersecurity Lab Write-up',
-      description: 'List of TryHackMe Labs Guidence and Walkthrough',
-      link: 'https://github.com/leechenwei/TryHackMe',
-      techs: ['Offensive Security', 'Kali Linux', 'Burp Suite', 'Linux CLI']
-    },
-    {
       title: 'Stroke Risk Predictor',
       description: 'The Stroke Risk Predictor is a machine learning tool developed using R and trained with a Random Forest model on a Kaggle dataset containing health attributes like age, hypertension, heart disease, and glucose levels. The Random Forest algorithm was chosen for its robustness, high accuracy, and ability to handle complex interactions. This predictor allows users to input their health parameters and receive a stroke risk prediction, which can aid in early detection and preventive care.',
       link: 'https://github.com/leechenwei/Stroke-Risk-Predictor',
       techs: ['R', 'Machine Learning', 'Kaggle']
-    },
-    {
-      title: 'Manual Network Threat Detection System',
-      description: 'This application allows users to input various network traffic features and then predicts the risk level associated with the given network traffic using the trained model.',
-      link: 'https://github.com/leechenwei/Manual-Network-Threat-Detection-System',
-      techs: ['Python', 'Machine Learning', 'Kaggle', 'Tkinter']
-    },
+    }
   ]
 
   const awards = [
@@ -196,7 +196,7 @@ export default function Portfolio() {
               </CardContent>
               <CardFooter>
                 <Button variant="secondary" asChild>
-                  <a href="https://drive.google.com/file/d/11GePZj-MSnrPuaIw8hm_3EWsDV9oWFe9/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="transition-transform transform hover:scale-110">
+                  <a href="https://drive.google.com/file/d/1GN_fW5GhPgBy54e7JwSVlS2-iac0H3W7/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="transition-transform transform hover:scale-110">
                     View Resume <BookOpen className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
