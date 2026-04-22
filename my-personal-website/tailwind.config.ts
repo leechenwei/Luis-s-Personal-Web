@@ -1,12 +1,13 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss";
+
+const config: Config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -50,27 +51,66 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "electric-blue": "#3B82F6",
+        "electric-purple": "#8B5CF6",
+        "dark-bg": "#0A0A0F",
+        "dark-surface": "#12141D",
+        "dark-surface-2": "#1A1D2B",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        "glow-blue": "0 0 20px rgba(59, 130, 246, 0.3)",
+        "glow-purple": "0 0 20px rgba(139, 92, 246, 0.3)",
+        "glow-accent":
+          "0 0 30px rgba(59, 130, 246, 0.15), 0 0 60px rgba(139, 92, 246, 0.1)",
+        "glow-card":
+          "0 0 40px rgba(59, 130, 246, 0.08), 0 0 80px rgba(139, 92, 246, 0.05)",
+      },
+      backgroundImage: {
+        "gradient-accent": "linear-gradient(135deg, #3B82F6, #8B5CF6)",
+        "gradient-accent-wide":
+          "linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899)",
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
       keyframes: {
         "accordion-down": {
-          from: { height: 0 },
+          from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
+          to: { height: "0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.8" },
+        },
+        "slide-up": {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        "slide-up": "slide-up 0.6s ease-out forwards",
+      },
+      screens: {
+        xs: "375px",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
+
+export default config;
