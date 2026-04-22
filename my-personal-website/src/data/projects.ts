@@ -7,6 +7,7 @@ export interface Project {
   highlights: string[];
   category: "ai" | "fullstack" | "enterprise";
   icon: string;
+  link?: string;
 }
 
 export interface Experience {
@@ -68,6 +69,7 @@ export const projects: Project[] = [
     ],
     category: "ai",
     icon: "MessageSquareCode",
+    link: "https://github.com/leechenwei/TOD-for-Hotel-Booking",
   },
   {
     id: "ai-lead-intelligence",
@@ -107,29 +109,6 @@ export const projects: Project[] = [
     ],
     category: "ai",
     icon: "Bot",
-  },
-  {
-    id: "ai-marketing-generator",
-    title: "AI Marketing Content Generator",
-    tagline: "Multi-model AI platform for marketing asset creation",
-    description:
-      "Created a marketing platform leveraging multiple AI models for content generation, image creation, and design mockups. Includes a built-in canvas editor for real-time design customization.",
-    tech: [
-      "Next.js",
-      "Google Generative AI",
-      "OpenAI",
-      "Replicate",
-      "Fabric.js",
-      "Supabase",
-    ],
-    highlights: [
-      "Multi-model AI generation (text, images, design)",
-      "Interactive canvas editor powered by Fabric.js",
-      "Template system for repeatable marketing assets",
-      "Multi-platform export for social media formats",
-    ],
-    category: "ai",
-    icon: "Palette",
   },
   {
     id: "document-generation-engine",

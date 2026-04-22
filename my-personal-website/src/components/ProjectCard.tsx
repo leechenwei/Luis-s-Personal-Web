@@ -4,21 +4,19 @@ import { motion } from "framer-motion";
 import {
   MessageSquareCode,
   Bot,
-  Palette,
   FileText,
   GraduationCap,
   Factory,
   Building2,
   Ticket,
   CheckCircle2,
+  ExternalLink,
 } from "lucide-react";
-import VideoPlaceholder from "./VideoPlaceholder";
 import type { Project } from "@/data/projects";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   MessageSquareCode,
   Bot,
-  Palette,
   FileText,
   GraduationCap,
   Factory,
@@ -39,15 +37,10 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div
       whileHover={{ y: -4, transition: { duration: 0.3 } }}
-      className="group glass-card overflow-hidden hover:shadow-glow-card transition-shadow duration-500 h-full"
+      className="group glass-card overflow-hidden hover:shadow-glow-card transition-shadow duration-500 h-full flex flex-col"
     >
-      {/* Video / Placeholder */}
-      <div className="p-4 pb-0">
-        <VideoPlaceholder />
-      </div>
-
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         {/* Category + Icon */}
         <div className="flex items-center gap-3 mb-3">
           <div className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
@@ -81,7 +74,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* Highlights */}
-        <ul className="space-y-1.5">
+        <ul className="space-y-1.5 flex-1">
           {project.highlights.map((h, i) => (
             <li key={i} className="flex gap-2 text-xs text-muted-foreground/60 leading-relaxed">
               <CheckCircle2 className="w-3.5 h-3.5 text-electric-blue/40 mt-0.5 shrink-0" />
@@ -89,6 +82,19 @@ export default function ProjectCard({ project }: { project: Project }) {
             </li>
           ))}
         </ul>
+
+        {/* GitHub link (if available) */}
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-xs font-medium text-electric-blue/70 hover:text-electric-blue transition-colors duration-300 cursor-pointer"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            View on GitHub
+          </a>
+        )}
       </div>
     </motion.div>
   );
