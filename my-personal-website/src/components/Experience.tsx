@@ -38,7 +38,7 @@ export default function Experience() {
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
                   className="w-8 h-8 rounded-full bg-dark-surface border-2 border-electric-blue/50 flex items-center justify-center shadow-glow-blue"
                 >

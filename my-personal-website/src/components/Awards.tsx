@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { awards, personalInfo } from "@/data/projects";
+import Image from "next/image";
 import { Trophy, GraduationCap, Code2, MapPin, Calendar } from "lucide-react";
 
 const typeConfig: Record<
@@ -44,9 +45,24 @@ export default function Awards() {
 
           <ScrollReveal delay={0.1}>
             <div className="glass-card p-6 hover:shadow-glow-card transition-shadow duration-500">
-              <div className="flex items-start gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                  <GraduationCap className="w-5 h-5 text-blue-400" />
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-14 h-14 rounded-xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center shrink-0 overflow-hidden">
+                  <Image
+                    src="/images/um-logo.png"
+                    alt="University of Malaya"
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.style.display = "none";
+                      const fallback = target.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = "flex";
+                    }}
+                  />
+                  <div className="hidden items-center justify-center w-full h-full">
+                    <GraduationCap className="w-7 h-7 text-blue-400" />
+                  </div>
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground">
@@ -107,7 +123,7 @@ export default function Awards() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             className="space-y-2"
           >
             {awards.map((award) => {

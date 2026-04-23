@@ -62,7 +62,7 @@ export default function Contact() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: false, amount: 0.3 }}
         variants={{
           hidden: {},
           visible: { transition: { staggerChildren: 0.1 } },
