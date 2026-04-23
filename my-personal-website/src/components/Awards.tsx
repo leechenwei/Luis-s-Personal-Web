@@ -46,12 +46,12 @@ export default function Awards() {
           <ScrollReveal delay={0.1}>
             <div className="glass-card p-6 hover:shadow-glow-card transition-shadow duration-500">
               <div className="flex items-start gap-4 mb-4">
-                <div className="w-14 h-14 rounded-xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center shrink-0 overflow-hidden">
+                <div className="w-20 h-20 rounded-xl bg-white p-2 flex items-center justify-center shrink-0 overflow-hidden">
                   <Image
                     src="/images/um-logo.png"
                     alt="University of Malaya"
-                    width={48}
-                    height={48}
+                    width={72}
+                    height={72}
                     className="object-contain"
                     onError={(e) => {
                       const target = e.currentTarget;
@@ -61,7 +61,7 @@ export default function Awards() {
                     }}
                   />
                   <div className="hidden items-center justify-center w-full h-full">
-                    <GraduationCap className="w-7 h-7 text-blue-400" />
+                    <GraduationCap className="w-8 h-8 text-blue-400" />
                   </div>
                 </div>
                 <div>
