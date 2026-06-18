@@ -6,8 +6,11 @@ export interface Project {
   tech: string[];
   highlights: string[];
   category: "ai" | "fullstack" | "enterprise";
+  // Ownership axis, separate from category: who the project was built for.
+  type: "personal" | "company";
   icon: string;
   link?: string;
+  demo?: string;
 }
 
 export interface Experience {
@@ -31,7 +34,8 @@ export const personalInfo = {
   title: "Full-stack Developer & AI Engineer",
   subtitle: "AI Fresh Graduate",
   email: "LuisLCW02@gmail.com",
-  phone: "(60) 16-2193255",
+  phone: "+60 16-219 3255",
+  whatsapp: "https://wa.me/60162193255",
   github: "https://github.com/leechenwei",
   linkedin: "https://www.linkedin.com/in/lcw02/",
   resumeUrl: "/Lee_Chen_Wei_Resume.pdf",
@@ -42,11 +46,39 @@ export const personalInfo = {
     period: "Oct 2022 — March 2026",
     cgpa: "3.80 / 4.00",
     location: "Kuala Lumpur, Malaysia",
+    transcriptUrl: "/UM_Transcript_ChenWei.pdf",
+    diplomaUrl: "/Diploma_Certificate.pdf",
   },
   languages: ["Mandarin", "English", "Bahasa Melayu"],
 };
 
 export const projects: Project[] = [
+  {
+    id: "self-evaluating-rag",
+    title: "Self-Evaluating Agentic RAG",
+    tagline: "RAG chatbot with a built-in evaluation workflow",
+    description:
+      "A production-shaped RAG chatbot where users curate a golden Q&A dataset, run regression-style evaluations on demand, and track metric deltas across config changes — turning 'is the chatbot still accurate?' into a number you can graph.",
+    tech: [
+      "Python",
+      "Streamlit",
+      "Gemini 2.5 Flash",
+      "LangGraph",
+      "ChromaDB",
+      "BM25 + Reranker",
+    ],
+    highlights: [
+      "Hybrid retrieval — dense (ChromaDB + MiniLM) + BM25, fused via Reciprocal Rank Fusion, reranked with a BGE cross-encoder",
+      "Agentic loop with function-calling: the LLM decides when to retrieve, rewrite, or honestly refuse — orchestrated via a LangGraph StateGraph",
+      "User-curated golden dataset with live Hit@k, MRR, keyword and refusal-accuracy metrics",
+      "Per-session multi-tenant isolation, bring-your-own-key, and zero server-side persistence",
+    ],
+    category: "ai",
+    type: "personal",
+    icon: "BrainCircuit",
+    link: "https://github.com/leechenwei/Agentic-RAG",
+    demo: "https://chenwei-rag.streamlit.app/",
+  },
   {
     id: "dialogue-system-fyp",
     title: "Task-oriented Dialogue System",
@@ -68,8 +100,56 @@ export const projects: Project[] = [
       "Real-time backend API for data retrieval and task completion",
     ],
     category: "ai",
+    type: "personal",
     icon: "MessageSquareCode",
     link: "https://github.com/leechenwei/TOD-for-Hotel-Booking",
+  },
+  {
+    id: "payslip-system",
+    title: "Malaysia Payslip System",
+    tagline: "Auto EPF/SOCSO/EIS payslip generator for SMEs",
+    description:
+      "A Next.js app for SSM-registered businesses to issue compliant payslips — auto-calculating EPF, SOCSO and EIS from 2024 KWSP/PERKESO rates, generating PDFs, and persisting immutable snapshots so old payslips never silently change when rates update.",
+    tech: [
+      "Next.js",
+      "Supabase",
+      "TypeScript",
+      "PDF Generation",
+      "Tailwind CSS",
+    ],
+    highlights: [
+      "Live deduction preview with EPF/SOCSO/EIS auto-calculation on 2024 statutory rates",
+      "Immutable payslip snapshots — historical records stay correct across rate changes",
+      "Magic-link auth and per-business data isolation via Supabase",
+      "One-click PDF generation with short-lived signed-URL downloads",
+    ],
+    category: "fullstack",
+    type: "personal",
+    icon: "Banknote",
+  },
+  {
+    id: "xin-jin-invoice",
+    title: "XIN JIN Invoice",
+    tagline: "Offline desktop invoice generator for a real business",
+    description:
+      "A 100% offline Electron desktop app built for a non-technical end user — one-click invoicing with client/item autocomplete, auto-calculated totals, print/PDF export, and searchable history, all backed by local SQLite (no accounts, no cloud, no fees).",
+    tech: [
+      "Electron",
+      "React",
+      "Vite",
+      "SQLite",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
+    highlights: [
+      "Fully offline — local SQLite storage at the OS-standard user-data path",
+      "Typed IPC bridge isolating the SQL layer from the React renderer",
+      "Autocomplete for clients and items with live total calculation",
+      "One-click print or PDF export with searchable invoice history",
+    ],
+    category: "fullstack",
+    type: "personal",
+    icon: "ReceiptText",
   },
   {
     id: "ai-lead-intelligence",
@@ -92,6 +172,7 @@ export const projects: Project[] = [
       "Automated CRM sync with conversation summaries",
     ],
     category: "ai",
+    type: "company",
     icon: "Bot",
   },
   {
@@ -108,6 +189,7 @@ export const projects: Project[] = [
       "Per-user contextual memory with conversation history",
     ],
     category: "ai",
+    type: "company",
     icon: "Bot",
   },
   {
@@ -131,6 +213,7 @@ export const projects: Project[] = [
       "Automated batch PDF generation from database queries",
     ],
     category: "enterprise",
+    type: "company",
     icon: "FileText",
   },
   {
@@ -154,6 +237,7 @@ export const projects: Project[] = [
       "E2E tested with Playwright across critical flows",
     ],
     category: "fullstack",
+    type: "company",
     icon: "GraduationCap",
   },
   {
@@ -177,6 +261,7 @@ export const projects: Project[] = [
       "Row-Level Security for role-based data access",
     ],
     category: "enterprise",
+    type: "company",
     icon: "Factory",
   },
   {
@@ -200,6 +285,7 @@ export const projects: Project[] = [
       "Internationalization for multi-region deployment",
     ],
     category: "enterprise",
+    type: "company",
     icon: "Building2",
   },
   {
@@ -223,6 +309,7 @@ export const projects: Project[] = [
       "Automated ticket delivery via WhatsApp integration",
     ],
     category: "fullstack",
+    type: "company",
     icon: "Ticket",
   },
 ];

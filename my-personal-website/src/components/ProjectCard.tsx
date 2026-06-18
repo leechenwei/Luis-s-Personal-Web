@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import {
   MessageSquareCode,
   Bot,
+  BrainCircuit,
+  Banknote,
+  ReceiptText,
   FileText,
   GraduationCap,
   Factory,
@@ -17,6 +20,9 @@ import type { Project } from "@/data/projects";
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   MessageSquareCode,
   Bot,
+  BrainCircuit,
+  Banknote,
+  ReceiptText,
   FileText,
   GraduationCap,
   Factory,
@@ -30,9 +36,15 @@ const categoryLabels: Record<string, { label: string; color: string }> = {
   enterprise: { label: "Enterprise", color: "bg-purple-500/10 text-purple-400 border-purple-500/20" },
 };
 
+const typeLabels: Record<string, { label: string; color: string }> = {
+  personal: { label: "Personal", color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" },
+  company: { label: "Inside Advisory", color: "bg-white/[0.04] text-muted-foreground/70 border-white/[0.08]" },
+};
+
 export default function ProjectCard({ project }: { project: Project }) {
   const Icon = iconMap[project.icon] || FileText;
   const cat = categoryLabels[project.category];
+  const ownership = typeLabels[project.type];
 
   return (
     <motion.div
@@ -50,6 +62,11 @@ export default function ProjectCard({ project }: { project: Project }) {
             className={`text-[10px] uppercase tracking-wider font-medium px-2 py-0.5 rounded-full border ${cat.color}`}
           >
             {cat.label}
+          </span>
+          <span
+            className={`text-[10px] uppercase tracking-wider font-medium px-2 py-0.5 rounded-full border ml-auto ${ownership.color}`}
+          >
+            {ownership.label}
           </span>
         </div>
 
@@ -83,17 +100,32 @@ export default function ProjectCard({ project }: { project: Project }) {
           ))}
         </ul>
 
-        {/* GitHub link (if available) */}
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 text-xs font-medium text-electric-blue/70 hover:text-electric-blue transition-colors duration-300 cursor-pointer"
-          >
-            <ExternalLink className="w-3.5 h-3.5" />
-            View on GitHub
-          </a>
+        {/* Links (if available) */}
+        {(project.link || project.demo) && (
+          <div className="mt-4 flex flex-wrap items-center gap-4">
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-medium text-electric-blue/70 hover:text-electric-blue transition-colors duration-300 cursor-pointer"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                View on GitHub
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-medium text-electric-blue/70 hover:text-electric-blue transition-colors duration-300 cursor-pointer"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                Live demo
+              </a>
+            )}
+          </div>
         )}
       </div>
     </motion.div>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { personalInfo } from "@/data/projects";
-import { Github, Linkedin, Mail, Download } from "lucide-react";
+import { Github, Linkedin, Mail, Download, MessageCircle } from "lucide-react";
 
 const links = [
   {
@@ -11,6 +11,12 @@ const links = [
     icon: Mail,
     label: "Email",
     detail: personalInfo.email,
+  },
+  {
+    href: personalInfo.whatsapp,
+    icon: MessageCircle,
+    label: "WhatsApp",
+    detail: personalInfo.phone,
   },
   {
     href: personalInfo.github,
@@ -67,7 +73,7 @@ export default function Contact() {
           hidden: {},
           visible: { transition: { staggerChildren: 0.1 } },
         }}
-        className="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto"
+        className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto"
       >
         {links.map(({ href, icon: Icon, label, detail }) => (
           <motion.a

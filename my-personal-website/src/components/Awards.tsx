@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { awards, personalInfo } from "@/data/projects";
 import Image from "next/image";
-import { Trophy, GraduationCap, Code2, MapPin, Calendar } from "lucide-react";
+import { Trophy, GraduationCap, Code2, MapPin, Calendar, FileText } from "lucide-react";
 
 const typeConfig: Record<
   string,
@@ -91,6 +91,31 @@ export default function Awards() {
                 <p className="text-2xl font-bold gradient-text inline-block">
                   {edu.cgpa}
                 </p>
+              </div>
+
+              {/* Credentials */}
+              <div className="mt-4 pt-4 border-t border-white/[0.04]">
+                <p className="text-xs text-muted-foreground/40 mb-2">Credentials</p>
+                <div className="flex flex-wrap gap-2">
+                  <a
+                    href={edu.transcriptUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-muted-foreground/70 hover:text-electric-blue hover:border-electric-blue/30 transition-colors duration-300 cursor-pointer"
+                  >
+                    <FileText className="w-3 h-3" />
+                    Transcript
+                  </a>
+                  <a
+                    href={edu.diplomaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-muted-foreground/70 hover:text-electric-blue hover:border-electric-blue/30 transition-colors duration-300 cursor-pointer"
+                  >
+                    <FileText className="w-3 h-3" />
+                    Diploma
+                  </a>
+                </div>
               </div>
 
               {/* Languages */}
