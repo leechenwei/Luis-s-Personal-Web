@@ -78,6 +78,20 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.tagline}
         </p>
 
+        {/* Outcome metrics — the numbers recruiters scan for */}
+        {project.metrics && (
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {project.metrics.map((m) => (
+              <span
+                key={m}
+                className="text-[11px] font-semibold px-2.5 py-1 rounded-md bg-electric-blue/10 border border-electric-blue/25 text-electric-blue"
+              >
+                {m}
+              </span>
+            ))}
+          </div>
+        )}
+
         {/* Tech badges */}
         <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tech.map((t) => (

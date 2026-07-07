@@ -11,6 +11,7 @@
   "dependencies": {
     "@gsap/react": "^2.1.0",
     "@radix-ui/react-tabs": "^1.1.1",
+    "@types/three": "^0.185.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.0",
@@ -21,7 +22,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@types/node": "^22",

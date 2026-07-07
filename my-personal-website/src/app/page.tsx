@@ -9,6 +9,7 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Awards from "@/components/Awards";
 import Contact from "@/components/Contact";
+import AskAI from "@/components/AskAI";
 
 const BackgroundEffects = lazy(() => import("@/components/BackgroundEffects"));
 
@@ -69,6 +70,8 @@ export default function Home() {
       <section id="contact" className="relative">
         <Contact />
       </section>
+
+      <AskAI />
     </SmoothScroll>
   );
 }

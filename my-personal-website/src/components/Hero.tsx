@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown, MapPin, Gamepad2 } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 import { personalInfo } from "@/data/projects";
 
@@ -28,7 +29,7 @@ export default function Hero() {
       {/* Grid overlay for hero section */}
       <div className="absolute inset-0 grid-bg opacity-60" />
 
-      <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center">
+      <div className="relative z-10 container mx-auto px-6 py-24 flex flex-col items-center text-center">
         {/* Photo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -69,9 +70,20 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-xl mb-3"
+          className="text-lg md:text-xl text-muted-foreground max-w-xl mb-2"
         >
           {personalInfo.title}
+        </motion.p>
+
+        {/* Location */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.35, duration: 0.6 }}
+          className="flex items-center gap-1.5 text-sm text-muted-foreground/50 mb-3"
+        >
+          <MapPin className="w-3.5 h-3.5" />
+          {personalInfo.location}
         </motion.p>
 
         {/* Tagline */}
@@ -81,7 +93,7 @@ export default function Hero() {
           transition={{ delay: 1.5, duration: 0.6 }}
           className="text-sm md:text-base text-muted-foreground/60 max-w-lg mb-10"
         >
-          AI Automation &middot; Full-stack Systems &middot; Enterprise Solutions
+          Agentic RAG &middot; LLM Systems &middot; Full-stack Automation
         </motion.p>
 
         {/* Social links */}
@@ -105,12 +117,30 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Enter 3D world */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2.1, duration: 0.6 }}
+          className="mt-6 hidden md:block"
+        >
+          <Link
+            href="/3d"
+            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-electric-blue/30 bg-electric-blue/5 text-sm font-medium text-electric-blue hover:bg-electric-blue/15 hover:shadow-glow-blue transition-all duration-300 cursor-pointer"
+          >
+            <Gamepad2 className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+            Enter 3D World
+            <span className="text-electric-blue/50 text-xs">— walk through my portfolio</span>
+          </Link>
+        </motion.div>
+
+        {/* Scroll indicator — in flow (not absolute) so it can never
+            overlap the socials/3D button on short viewports */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="mt-16 flex flex-col items-center gap-2"
         >
           <span className="text-xs text-muted-foreground/40 uppercase tracking-widest">
             Scroll to explore

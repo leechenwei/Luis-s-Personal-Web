@@ -11,6 +11,8 @@ export interface Project {
   icon: string;
   link?: string;
   demo?: string;
+  // Short measurable-outcome chips ("86.8% intent F1") — only real numbers.
+  metrics?: string[];
 }
 
 export interface Experience {
@@ -31,15 +33,16 @@ export interface Award {
 export const personalInfo = {
   name: "Lee Chen Wei",
   alias: "Luis",
-  title: "Full-stack Developer & AI Engineer",
+  title: "Applied AI Engineer",
   subtitle: "AI Fresh Graduate",
+  location: "Selangor, Malaysia",
   email: "LuisLCW02@gmail.com",
   phone: "+60 16-219 3255",
   whatsapp: "https://wa.me/60162193255",
   github: "https://github.com/leechenwei",
   linkedin: "https://www.linkedin.com/in/lcw02/",
   resumeUrl: "/Lee_Chen_Wei_Resume.pdf",
-  bio: "I build AI-powered systems and full-stack applications that solve real business problems. From agentic automation workflows with n8n and Dify AI to education platforms and manufacturing ERPs, I focus on delivering practical solutions that help SMEs digitalize and scale.",
+  bio: "I'm an Applied AI Engineer building production LLM-powered systems. I deployed a public Self-Evaluating Agentic RAG and shipped a multi-channel AI assistant with identity-scoped vector memory at Inside Advisory — turning agentic retrieval, automation, and full-stack engineering into tools that help SMEs digitalize and scale. Fresh graduate from University of Malaya, available immediately.",
   education: {
     university: "University of Malaya",
     degree: "Bachelor of Computer Science (Artificial Intelligence)",
@@ -75,6 +78,7 @@ export const projects: Project[] = [
     ],
     category: "ai",
     type: "personal",
+    metrics: ["Hit@k / MRR / refusal-accuracy evals built-in", "Public BYOK demo"],
     icon: "BrainCircuit",
     link: "https://github.com/leechenwei/Agentic-RAG",
     demo: "https://chenwei-rag.streamlit.app/",
@@ -101,6 +105,7 @@ export const projects: Project[] = [
     ],
     category: "ai",
     type: "personal",
+    metrics: ["86.8% intent F1", "94.3% slot filling", "86.7% task completion"],
     icon: "MessageSquareCode",
     link: "https://github.com/leechenwei/TOD-for-Hotel-Booking",
   },
@@ -190,6 +195,7 @@ export const projects: Project[] = [
     ],
     category: "ai",
     type: "company",
+    metrics: ["8\u201310 daily internal users", "3 channels"],
     icon: "Bot",
   },
   {
@@ -238,6 +244,7 @@ export const projects: Project[] = [
     ],
     category: "fullstack",
     type: "company",
+    metrics: ["150+ students", "E2E tested"],
     icon: "GraduationCap",
   },
   {
@@ -286,6 +293,7 @@ export const projects: Project[] = [
     ],
     category: "enterprise",
     type: "company",
+    metrics: ["10+ modules", "20 daily users"],
     icon: "Building2",
   },
   {
@@ -321,11 +329,10 @@ export const experiences: Experience[] = [
     period: "Aug 2025 — Present",
     location: "Puchong, Malaysia",
     description: [
-      "Built 'Inside Platform' — a multi-service AI system combining Hono.js, Evolution API, and a custom Claude-powered memory layer to automate distributed messaging and operational workflows",
-      "Developed a centralized Next.js + Supabase ecosystem used by 5 SME clients to unify operational data and automate business processes, contributing RM10k+ in monthly recurring revenue (MRR)",
-      "Eliminated 100% of legacy manual recording friction by digitalizing WhatsApp activity logs, Excel-based trip planning, check-ins, and commission tracking into real-time automated workflows",
-      "Built 'Inside-Assistant' — an internal RAG-powered AI assistant integrated with Lark, supporting document generation, scheduling, and tool-calling workflows",
-      "Engineered automated financial pipelines using n8n and Express with custom JavaScript logic for P&L and balance sheet processing",
+      "Built 'Inside Assistant' — a production multi-channel AI system (WhatsApp / Web / Lark) on Next.js with identity-scoped vector memory using Supabase pgvector and OpenAI text-embedding-3-small; migrated the LLM backend from a self-hosted Claude proxy to BytePlus for cost efficiency, serving 8–10 internal users",
+      "Prototyped 'AI Conversational Lead Intelligence' — a real-time WhatsApp webhook pipeline with multi-criteria LLM-based lead scoring and Groq Whisper voice/image transcription for CRM intelligence",
+      "Delivered 3 client SaaS apps end-to-end on Next.js + Supabase (RM5k MRR) across AV/IoT, steel manufacturing, and education — an ERP with 10+ modules (20 daily users), a FIFO manufacturing system with QR-driven cutting operations, and a coding-school platform; also automated P&L / balance-sheet pipelines with n8n and Node/Express plus a live dashboard",
+      "Maintain 3 pre-existing production SaaS systems (pest control, fire safety, concrete manufacturing) — bug fixes, feature requests, user support, and performance triage across TypeScript / Node.js codebases",
     ],
     side: "right",
   },
@@ -379,31 +386,49 @@ export const awards: Award[] = [
 ];
 
 export const techStack = [
-  { name: "Python", category: "language" },
-  { name: "SQL", category: "language" },
-  { name: "TypeScript", category: "language" },
-  { name: "React", category: "frontend" },
-  { name: "Next.js", category: "frontend" },
-  { name: "Tailwind CSS", category: "frontend" },
-  { name: "Flask", category: "backend" },
-  { name: "Hono.js", category: "backend" },
-  { name: "Supabase", category: "backend" },
-  { name: "Upstash Redis", category: "backend" },
-  { name: "Node.js", category: "backend" },
-  { name: "Claude AI", category: "ai" },
-  { name: "LangChain", category: "ai" },
-  { name: "Dify AI", category: "ai" },
+  // AI / LLM
   { name: "RAG", category: "ai" },
-  { name: "n8n", category: "ai" },
-  { name: "Prompt Eng.", category: "ai" },
-  { name: "TensorFlow", category: "ai" },
-  { name: "PyTorch", category: "ai" },
-  { name: "Scikit-Learn", category: "ai" },
-  { name: "Docker", category: "devops" },
+  { name: "LangGraph", category: "ai" },
+  { name: "LangChain", category: "ai" },
+  { name: "Hybrid Search (Dense + BM25)", category: "ai" },
+  { name: "RRF", category: "ai" },
+  { name: "BGE Reranker", category: "ai" },
+  { name: "Function Calling", category: "ai" },
+  { name: "Agent Orchestration", category: "ai" },
+  { name: "RAG Evaluation (Hit@k, MRR)", category: "ai" },
+  { name: "Prompt Engineering", category: "ai" },
+  // LLM APIs
+  { name: "BytePlus", category: "ai" },
+  { name: "Google Gemini", category: "ai" },
+  { name: "Anthropic Claude", category: "ai" },
+  { name: "OpenAI", category: "ai" },
+  { name: "Groq", category: "ai" },
+  // Languages
+  { name: "Python", category: "language" },
+  { name: "TypeScript", category: "language" },
+  { name: "JavaScript", category: "language" },
+  { name: "SQL", category: "language" },
+  // Frontend
+  { name: "Next.js", category: "frontend" },
+  { name: "React", category: "frontend" },
+  { name: "Tailwind CSS", category: "frontend" },
+  { name: "Streamlit", category: "frontend" },
+  { name: "PWA", category: "frontend" },
+  // Backend / Data
+  { name: "Node.js", category: "backend" },
+  { name: "Flask", category: "backend" },
+  { name: "Supabase (PostgreSQL)", category: "backend" },
+  { name: "pgvector", category: "backend" },
+  { name: "ChromaDB", category: "backend" },
+  { name: "Upstash Redis", category: "backend" },
+  // Infra / Tooling / Testing
   { name: "Vercel", category: "devops" },
-  { name: "Linux", category: "devops" },
-  { name: "Kubernetes", category: "devops" },
+  { name: "Zeabur", category: "devops" },
+  { name: "n8n", category: "devops" },
   { name: "Git", category: "devops" },
-  { name: "Claude Code", category: "devops" },
-  { name: "Lark CLI", category: "devops" },
+  { name: "Playwright", category: "devops" },
+  { name: "pytest", category: "devops" },
+  { name: "Vitest", category: "devops" },
+  { name: "Evolution API", category: "devops" },
+  { name: "Lark SDK", category: "devops" },
 ];

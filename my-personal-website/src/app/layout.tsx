@@ -8,32 +8,38 @@ const inter = Inter({
   display: "swap",
 });
 
+const TITLE = "Lee Chen Wei (Luis) | Applied AI Engineer";
+const DESCRIPTION =
+  "Applied AI Engineer building production LLM systems — public Self-Evaluating Agentic RAG, multi-channel AI assistant with vector memory, and full-stack SaaS for SMEs. Explore the portfolio in 2D, walk it in 3D, or ask its built-in AI.";
+
 export const metadata: Metadata = {
-  title: "Lee Chen Wei (Luis) | AI Engineer & Full Stack Developer",
-  description:
-    "Portfolio of Lee Chen Wei (Luis) — AI Engineer & Full Stack Developer specializing in AI automation, full-stack systems, and enterprise solutions. Built 14+ production systems with Claude AI, Next.js, Supabase, and more.",
+  metadataBase: new URL("https://luis-s-personal-web.vercel.app"),
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: [
-    "AI Engineer",
+    "Applied AI Engineer",
+    "RAG",
+    "LLM",
+    "LangGraph",
+    "Agentic AI",
     "Full Stack Developer",
     "Next.js",
-    "Claude AI",
     "Supabase",
-    "Machine Learning",
     "Malaysia",
   ],
   authors: [{ name: "Lee Chen Wei" }],
   openGraph: {
-    title: "Lee Chen Wei (Luis) | AI Engineer & Full Stack Developer",
-    description:
-      "AI Engineer & Full Stack Developer — 14+ production systems built with AI, Next.js, and Supabase.",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    siteName: "Luis — Applied AI Engineer",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lee Chen Wei (Luis) | AI Engineer & Full Stack Developer",
-    description:
-      "AI Engineer & Full Stack Developer — 14+ production systems built with AI, Next.js, and Supabase.",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 
