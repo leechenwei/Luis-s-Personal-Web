@@ -43,7 +43,7 @@ export default function Hero() {
               alt={personalInfo.name}
               width={160}
               height={160}
-              className="object-cover w-full h-full scale-[2.5]"
+              className="object-cover w-full h-full"
               priority
             />
           </div>
