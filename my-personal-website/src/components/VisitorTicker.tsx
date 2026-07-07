@@ -29,8 +29,12 @@ function label(v: Visit): string {
 
 export default function VisitorTicker() {
   const [current, setCurrent] = useState<Visit | null>(null);
-  const visitsRef = useRef<Visit[]>([]);
-  const idxRef = useRef(0);
+  // Each visit is shown exactly once: a queue (newest first) drains as
+  // toasts display; the periodic refresh only enqueues visits newer than
+  // anything already seen.
+  const queueRef = useRef<Visit[]>([]);
+  const newestSeenRef = useRef(0);
+  const keyRef = useRef(0);
 
   useEffect(() => {
     let alive = true;
@@ -45,20 +49,27 @@ export default function VisitorTicker() {
       try {
         const res = await fetch("/api/visit");
         const data = await res.json();
-        if (alive && Array.isArray(data.visits)) {
-          visitsRef.current = data.visits;
+        if (!alive || !Array.isArray(data.visits)) return;
+        // API returns newest first
+        const fresh = (data.visits as Visit[]).filter(
+          (v) => v.ts > newestSeenRef.current
+        );
+        if (fresh.length) {
+          newestSeenRef.current = fresh[0].ts;
+          // Cap the initial backlog so a first load doesn't parade forever
+          queueRef.current.push(...fresh.slice(0, 10));
         }
       } catch {
         /* silent — ticker just stays quiet */
       }
     };
 
-    // Show one toast, hold, hide, wait, show the next
+    // Pop the next unshown visit; if the queue is empty, stay quiet
     const cycle = () => {
-      const visits = visitsRef.current;
-      if (visits.length) {
-        setCurrent(visits[idxRef.current % visits.length]);
-        idxRef.current++;
+      const next = queueRef.current.shift();
+      if (next) {
+        keyRef.current++;
+        setCurrent(next);
         hideTimer = setTimeout(() => setCurrent(null), 5000);
       }
     };
@@ -84,7 +95,7 @@ export default function VisitorTicker() {
       <AnimatePresence>
         {current && (
           <motion.div
-            key={current.ts + "-" + idxRef.current}
+            key={current.ts + "-" + keyRef.current}
             initial={{ opacity: 0, x: -24, y: 8 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
