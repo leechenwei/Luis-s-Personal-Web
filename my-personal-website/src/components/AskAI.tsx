@@ -1,13 +1,43 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Send, X, Bot } from "lucide-react";
+import {
+  Sparkles,
+  Send,
+  X,
+  Bot,
+  Database,
+  MessageCircle,
+  FileText,
+  ChevronDown,
+} from "lucide-react";
 import { personalInfo } from "@/data/projects";
+
+interface Source {
+  n: number;
+  source: string;
+  title: string;
+  score: number;
+}
 
 interface Msg {
   role: "user" | "assistant";
   text: string;
+  sources?: Source[];
+}
+
+interface KBFile {
+  source: string;
+  title: string;
+  words: number;
+}
+
+interface Pipeline {
+  chunking: string;
+  retrieval: string;
+  topK: number;
+  model: string;
 }
 
 const SUGGESTIONS = [
@@ -19,14 +49,84 @@ const SUGGESTIONS = [
 
 const GREETING: Msg = {
   role: "assistant",
-  text: `Hi! I'm Luis's AI assistant — ask me anything about his experience, projects, or skills. (Yes, he built me into his own portfolio 🙂)`,
+  text: `Hi! I'm Luis's AI assistant — a mini-RAG grounded in this portfolio. Ask me anything; my answers cite their sources. (Yes, he built me into his own site 🙂)`,
 };
+
+/* Render answer text with [n] citations as styled chips */
+function CitedText({ text, sources }: { text: string; sources?: Source[] }) {
+  const parts = text.split(/(\[\d+\])/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const m = part.match(/^\[(\d+)\]$/);
+        if (!m) return <Fragment key={i}>{part}</Fragment>;
+        const src = sources?.find((s) => s.n === Number(m[1]));
+        return (
+          <sup
+            key={i}
+            title={src ? `${src.source} — ${src.title}` : undefined}
+            className="inline-flex items-center justify-center min-w-4 h-4 px-1 mx-0.5 rounded bg-blue-500/25 border border-blue-400/40 text-blue-300 text-[9px] font-bold align-super cursor-help"
+          >
+            {m[1]}
+          </sup>
+        );
+      })}
+    </>
+  );
+}
+
+/* Collapsible per-answer source list with score bars */
+function SourceList({ sources }: { sources: Source[] }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="mt-2 pt-2 border-t border-white/[0.06]">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="inline-flex items-center gap-1 text-[10px] font-medium text-white/40 hover:text-white/70 transition-colors cursor-pointer"
+      >
+        <ChevronDown
+          className={`w-3 h-3 transition-transform ${open ? "rotate-180" : ""}`}
+        />
+        {sources.length} source{sources.length > 1 ? "s" : ""} retrieved
+      </button>
+      {open && (
+        <div className="mt-1.5 space-y-1">
+          {sources.map((s) => (
+            <div key={s.n} className="flex items-center gap-2 text-[10px]">
+              <span className="shrink-0 w-4 h-4 rounded bg-blue-500/25 border border-blue-400/40 text-blue-300 font-bold flex items-center justify-center text-[9px]">
+                {s.n}
+              </span>
+              <span className="text-white/60 font-mono truncate">
+                {s.source}
+              </span>
+              <span className="ml-auto shrink-0 flex items-center gap-1.5">
+                <span className="w-12 h-1 rounded-full bg-white/10 overflow-hidden">
+                  <span
+                    className="block h-full rounded-full bg-blue-400/70"
+                    style={{ width: `${Math.round(s.score * 100)}%` }}
+                  />
+                </span>
+                <span className="text-white/30 w-7 text-right">
+                  {Math.round(s.score * 100)}%
+                </span>
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function AskAI() {
   const [open, setOpen] = useState(false);
+  const [view, setView] = useState<"chat" | "kb">("chat");
   const [msgs, setMsgs] = useState<Msg[]>([GREETING]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [kb, setKb] = useState<{ files: KBFile[]; pipeline: Pipeline } | null>(
+    null
+  );
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -38,13 +138,20 @@ export default function AskAI() {
   }, [msgs, busy]);
 
   useEffect(() => {
-    if (open) inputRef.current?.focus();
-  }, [open]);
+    if (open && view === "chat") inputRef.current?.focus();
+    if (open && !kb) {
+      fetch("/api/ask")
+        .then((r) => r.json())
+        .then((d) => d?.files && setKb(d))
+        .catch(() => {});
+    }
+  }, [open, view, kb]);
 
   const send = async (question?: string) => {
     const text = (question ?? input).trim();
     if (!text || busy) return;
     setInput("");
+    setView("chat");
     const history = [...msgs, { role: "user" as const, text }];
     setMsgs(history);
     setBusy(true);
@@ -52,8 +159,10 @@ export default function AskAI() {
       const res = await fetch("/api/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // Greeting is UI sugar, not model context
-        body: JSON.stringify({ messages: history.slice(1) }),
+        body: JSON.stringify({
+          // Greeting is UI sugar; strip sources from history
+          messages: history.slice(1).map(({ role, text }) => ({ role, text })),
+        }),
       });
       const data = await res.json();
       setMsgs((m) => [
@@ -63,6 +172,7 @@ export default function AskAI() {
           text: res.ok
             ? data.text
             : (data.error ?? "Something went wrong — try again?"),
+          sources: res.ok ? data.sources : undefined,
         },
       ]);
     } catch {
@@ -93,7 +203,7 @@ export default function AskAI() {
         Ask AI about Luis
       </motion.button>
 
-      {/* Chat panel */}
+      {/* Panel */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -113,9 +223,25 @@ export default function AskAI() {
                   Luis&apos;s AI Assistant
                 </p>
                 <p className="text-[10px] text-white/40">
-                  RAG-lite over this portfolio · Gemini
+                  mini-RAG · cited answers · Gemini
                 </p>
               </div>
+              <button
+                onClick={() => setView(view === "chat" ? "kb" : "chat")}
+                className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+                  view === "kb"
+                    ? "text-blue-300 bg-blue-500/15"
+                    : "text-white/40 hover:text-white hover:bg-white/10"
+                }`}
+                aria-label="Toggle knowledge base"
+                title="Knowledge base"
+              >
+                {view === "kb" ? (
+                  <MessageCircle className="w-4 h-4" />
+                ) : (
+                  <Database className="w-4 h-4" />
+                )}
+              </button>
               <button
                 onClick={() => setOpen(false)}
                 className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
@@ -125,58 +251,110 @@ export default function AskAI() {
               </button>
             </div>
 
-            {/* Messages */}
-            <div
-              ref={scrollRef}
-              className="flex-1 overflow-y-auto px-4 py-4 space-y-3"
-            >
-              {msgs.map((m, i) => (
-                <div
-                  key={i}
-                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
-                >
-                  <div
-                    className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-[13px] leading-relaxed whitespace-pre-wrap ${
-                      m.role === "user"
-                        ? "bg-blue-600 text-white rounded-br-sm"
-                        : "bg-white/[0.06] border border-white/[0.06] text-white/85 rounded-bl-sm"
-                    }`}
-                  >
-                    {m.text}
-                  </div>
-                </div>
-              ))}
-              {busy && (
-                <div className="flex justify-start">
-                  <div className="px-4 py-3 rounded-2xl rounded-bl-sm bg-white/[0.06] border border-white/[0.06]">
-                    <span className="inline-flex gap-1">
-                      {[0, 1, 2].map((d) => (
-                        <span
-                          key={d}
-                          className="w-1.5 h-1.5 rounded-full bg-white/50 animate-bounce"
-                          style={{ animationDelay: `${d * 0.15}s` }}
-                        />
-                      ))}
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {/* Suggestions (only before first user message) */}
-              {msgs.length === 1 && !busy && (
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {SUGGESTIONS.map((s) => (
-                    <button
-                      key={s}
-                      onClick={() => send(s)}
-                      className="text-[11px] px-3 py-1.5 rounded-full border border-blue-400/30 text-blue-300/90 hover:bg-blue-500/15 transition-colors cursor-pointer"
+            {view === "kb" ? (
+              /* ---------------- Knowledge base view ---------------- */
+              <div className="flex-1 overflow-y-auto px-4 py-4">
+                <p className="text-[11px] text-white/50 mb-3">
+                  Every answer is grounded in these{" "}
+                  {kb?.files.length ?? "…"} sources — built from the same data
+                  that renders this site.
+                </p>
+                <div className="space-y-1">
+                  {kb?.files.map((f) => (
+                    <div
+                      key={f.source}
+                      className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.05]"
                     >
-                      {s}
-                    </button>
+                      <FileText className="w-3.5 h-3.5 text-blue-300/70 shrink-0" />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[11px] font-mono text-white/75 truncate">
+                          {f.source}
+                        </p>
+                        <p className="text-[10px] text-white/35 truncate">
+                          {f.title}
+                        </p>
+                      </div>
+                      <span className="text-[9px] text-white/30 shrink-0">
+                        {f.words}w
+                      </span>
+                    </div>
                   ))}
                 </div>
-              )}
-            </div>
+                {kb && (
+                  <div className="mt-4 px-2.5 py-2.5 rounded-lg border border-blue-400/15 bg-blue-500/[0.06] text-[10px] leading-relaxed text-white/45">
+                    <p className="font-semibold text-blue-300/80 mb-1">
+                      Pipeline
+                    </p>
+                    <p>Chunking: {kb.pipeline.chunking}</p>
+                    <p>Retrieval: {kb.pipeline.retrieval}</p>
+                    <p>
+                      Top-{kb.pipeline.topK} chunks → {kb.pipeline.model}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ) : (
+              /* -------------------- Chat view -------------------- */
+              <div
+                ref={scrollRef}
+                className="flex-1 overflow-y-auto px-4 py-4 space-y-3"
+              >
+                {msgs.map((m, i) => (
+                  <div
+                    key={i}
+                    className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+                  >
+                    <div
+                      className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-[13px] leading-relaxed whitespace-pre-wrap ${
+                        m.role === "user"
+                          ? "bg-blue-600 text-white rounded-br-sm"
+                          : "bg-white/[0.06] border border-white/[0.06] text-white/85 rounded-bl-sm"
+                      }`}
+                    >
+                      {m.role === "assistant" ? (
+                        <>
+                          <CitedText text={m.text} sources={m.sources} />
+                          {m.sources && m.sources.length > 0 && (
+                            <SourceList sources={m.sources} />
+                          )}
+                        </>
+                      ) : (
+                        m.text
+                      )}
+                    </div>
+                  </div>
+                ))}
+                {busy && (
+                  <div className="flex justify-start">
+                    <div className="px-4 py-3 rounded-2xl rounded-bl-sm bg-white/[0.06] border border-white/[0.06]">
+                      <span className="inline-flex gap-1">
+                        {[0, 1, 2].map((d) => (
+                          <span
+                            key={d}
+                            className="w-1.5 h-1.5 rounded-full bg-white/50 animate-bounce"
+                            style={{ animationDelay: `${d * 0.15}s` }}
+                          />
+                        ))}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                {msgs.length === 1 && !busy && (
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {SUGGESTIONS.map((s) => (
+                      <button
+                        key={s}
+                        onClick={() => send(s)}
+                        className="text-[11px] px-3 py-1.5 rounded-full border border-blue-400/30 text-blue-300/90 hover:bg-blue-500/15 transition-colors cursor-pointer"
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Input */}
             <form
