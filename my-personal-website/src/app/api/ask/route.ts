@@ -167,6 +167,7 @@ export async function GET() {
       source: c.source,
       title: c.title,
       words: c.text.split(/\s+/).length,
+      text: c.text, // public data — same content that renders the site
     })),
   });
 }
