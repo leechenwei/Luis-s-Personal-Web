@@ -234,7 +234,10 @@ export const projects: Project[] = [
     ],
     category: "ai",
     type: "company",
-    media: [{ src: "/media/inside-assistant.jpg", alt: "Inside Assistant web app — chat sessions, knowledge, team and observability sections" }, { src: "/media/diagram-assistant.jpg", alt: "Architecture — WhatsApp/Web/Lark channels, unified gateway, agent core with pgvector identity-scoped memory" }],
+    media: [
+      { src: "/media/ia-wa-relay.jpg", alt: "Inside Assistant relaying updates between teammates over WhatsApp — forwarding a staging release note and returning the reply '— via Inside Assistant' (names and client systems redacted)" },
+      { src: "/media/diagram-assistant.jpg", alt: "Architecture — WhatsApp/Web/Lark channels, unified gateway, agent core with pgvector identity-scoped memory" },
+    ],
     metrics: ["8\u201310 daily internal users", "3 channels"],
     icon: "Bot",
   },
