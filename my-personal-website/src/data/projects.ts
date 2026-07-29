@@ -13,6 +13,8 @@ export interface Project {
   demo?: string;
   // Short measurable-outcome chips ("86.8% intent F1") — only real numbers.
   metrics?: string[];
+  // Visual proof: screenshots or architecture diagrams shown in a lightbox.
+  media?: { src: string; alt: string }[];
 }
 
 export interface Experience {
@@ -78,6 +80,7 @@ export const projects: Project[] = [
     ],
     category: "ai",
     type: "personal",
+    media: [{ src: "/media/rag-demo.jpg", alt: "Live Streamlit demo — chat, knowledge base, eval dataset and run-evaluation tabs" }],
     metrics: ["Hit@k / MRR / refusal-accuracy evals built-in", "Public BYOK demo"],
     icon: "BrainCircuit",
     link: "https://github.com/leechenwei/Agentic-RAG",
@@ -108,6 +111,37 @@ export const projects: Project[] = [
     metrics: ["86.8% intent F1", "94.3% slot filling", "86.7% task completion"],
     icon: "MessageSquareCode",
     link: "https://github.com/leechenwei/TOD-for-Hotel-Booking",
+  },
+  {
+    id: "this-portfolio",
+    title: "This Portfolio Itself",
+    tagline: "3D walkable world, cited mini-RAG assistant, live visitor feed",
+    description:
+      "The site you're on: a Next.js portfolio with a first-person Three.js world floating in space, an embedded mini-RAG assistant that answers with citations from 18 grounded sources, and a real-time public visitor ticker backed by Upstash Redis.",
+    tech: [
+      "Next.js",
+      "Three.js",
+      "Gemini",
+      "Upstash Redis",
+      "Framer Motion",
+      "Tailwind CSS",
+    ],
+    highlights: [
+      "First-person 3D light bridge — mirror floor, reactive exhibit panels, synthesized WebAudio ambience, zero assets",
+      "Mini-RAG chat: section-level chunks, BM25-style retrieval, top-4 grounding, clickable [n] citations",
+      "Live visitor ticker — city-level geo from edge headers, capped self-cleaning Redis list",
+      "Generated OG image, sitemap, and structured metadata for clean sharing",
+    ],
+    category: "fullstack",
+    type: "personal",
+    media: [
+      { src: "/media/world-3d.jpg", alt: "The 3D world — a neon light bridge in space with exhibit panels and mirror floor" },
+      { src: "/media/ask-ai.jpg", alt: "Ask AI assistant answering with numbered citations, retrieved sources, and the live visitor ticker" },
+      { src: "/media/site-hero.jpg", alt: "Portfolio hero section" },
+    ],
+    icon: "Sparkles",
+    link: "https://github.com/leechenwei/Luis-s-Personal-Web",
+    demo: "https://luis-s-personal-web.vercel.app/3d",
   },
   {
     id: "payslip-system",
@@ -178,6 +212,7 @@ export const projects: Project[] = [
     ],
     category: "ai",
     type: "company",
+    media: [{ src: "/media/diagram-leadintel.jpg", alt: "Architecture — Evolution API webhooks into a Hono.js ingest worker, Groq Whisper transcription, LLM lead scoring, Supabase, CRM sync" }],
     icon: "Bot",
   },
   {
@@ -195,6 +230,7 @@ export const projects: Project[] = [
     ],
     category: "ai",
     type: "company",
+    media: [{ src: "/media/diagram-assistant.jpg", alt: "Architecture — WhatsApp/Web/Lark channels through a unified Next.js gateway into an agent core with pgvector identity-scoped memory" }],
     metrics: ["8\u201310 daily internal users", "3 channels"],
     icon: "Bot",
   },
@@ -269,6 +305,7 @@ export const projects: Project[] = [
     ],
     category: "enterprise",
     type: "company",
+    media: [{ src: "/media/diagram-erp.jpg", alt: "Architecture — coil intake with QR labels, cutting sessions, FIFO distribution engine, job sheets and RLS-secured live inventory" }],
     icon: "Factory",
   },
   {

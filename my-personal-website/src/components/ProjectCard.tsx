@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   MessageSquareCode,
   Bot,
@@ -12,8 +14,12 @@ import {
   Factory,
   Building2,
   Ticket,
+  Sparkles,
   CheckCircle2,
   ExternalLink,
+  X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import type { Project } from "@/data/projects";
 
@@ -28,7 +34,88 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Factory,
   Building2,
   Ticket,
+  Sparkles,
 };
+
+/* Fullscreen lightbox for a project's media */
+function Lightbox({
+  media,
+  index,
+  onClose,
+  onNav,
+}: {
+  media: NonNullable<Project["media"]>;
+  index: number;
+  onClose: () => void;
+  onNav: (i: number) => void;
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") onNav((index + 1) % media.length);
+      if (e.key === "ArrowLeft")
+        onNav((index - 1 + media.length) % media.length);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [index, media.length, onClose, onNav]);
+
+  const item = media[index];
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-10 cursor-zoom-out"
+    >
+      <button
+        onClick={onClose}
+        aria-label="Close"
+        className="absolute top-4 right-4 p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+      >
+        <X className="w-5 h-5" />
+      </button>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={item.src}
+        alt={item.alt}
+        onClick={(e) => e.stopPropagation()}
+        className="max-w-full max-h-[80vh] rounded-xl border border-white/10 shadow-2xl cursor-default"
+      />
+      <p
+        onClick={(e) => e.stopPropagation()}
+        className="mt-4 max-w-2xl text-center text-xs text-white/50 cursor-default"
+      >
+        {item.alt}
+      </p>
+      {media.length > 1 && (
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="mt-3 flex items-center gap-4 cursor-default"
+        >
+          <button
+            onClick={() => onNav((index - 1 + media.length) % media.length)}
+            aria-label="Previous"
+            className="p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <span className="text-xs text-white/40">
+            {index + 1} / {media.length}
+          </span>
+          <button
+            onClick={() => onNav((index + 1) % media.length)}
+            aria-label="Next"
+            className="p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
 const categoryLabels: Record<string, { label: string; color: string }> = {
   ai: { label: "AI", color: "bg-amber-500/10 text-amber-400 border-amber-500/20" },
@@ -45,6 +132,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   const Icon = iconMap[project.icon] || FileText;
   const cat = categoryLabels[project.category];
   const ownership = typeLabels[project.type];
+  const [lightbox, setLightbox] = useState<number | null>(null);
 
   return (
     <motion.div
@@ -113,6 +201,44 @@ export default function ProjectCard({ project }: { project: Project }) {
             </li>
           ))}
         </ul>
+
+        {/* Visual proof: screenshot / diagram thumbnails */}
+        {project.media && project.media.length > 0 && (
+          <div className="mt-4 flex gap-2">
+            {project.media.map((m, i) => (
+              <button
+                key={m.src}
+                onClick={() => setLightbox(i)}
+                className="group/thumb relative flex-1 max-w-[9rem] aspect-video overflow-hidden rounded-lg border border-white/[0.08] hover:border-electric-blue/50 transition-colors cursor-zoom-in"
+                aria-label={`View: ${m.alt}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={m.src}
+                  alt={m.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-top group-hover/thumb:scale-105 transition-transform duration-300"
+                />
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Portal to body: the card's hover transform would otherwise trap
+            position:fixed inside the card */}
+        {lightbox !== null &&
+          project.media &&
+          createPortal(
+            <AnimatePresence>
+              <Lightbox
+                media={project.media}
+                index={lightbox}
+                onClose={() => setLightbox(null)}
+                onNav={setLightbox}
+              />
+            </AnimatePresence>,
+            document.body
+          )}
 
         {/* Links (if available) */}
         {(project.link || project.demo) && (
