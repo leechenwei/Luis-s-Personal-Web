@@ -11,6 +11,7 @@ import Awards from "@/components/Awards";
 import Contact from "@/components/Contact";
 import AskAI from "@/components/AskAI";
 import VisitorTicker from "@/components/VisitorTicker";
+import ChatwootWidget from "@/components/ChatwootWidget";
 
 const BackgroundEffects = lazy(() => import("@/components/BackgroundEffects"));
 
@@ -74,6 +75,7 @@ export default function Home() {
 
       <AskAI />
       <VisitorTicker />
+      <ChatwootWidget />
     </SmoothScroll>
   );
 }

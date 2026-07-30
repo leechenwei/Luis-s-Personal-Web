@@ -91,7 +91,8 @@ export default function VisitorTicker() {
   }, []);
 
   return (
-    <div className="fixed bottom-6 left-6 z-40 pointer-events-none">
+    // bottom-28: clears the Chatwoot launcher bubble that lives bottom-left
+    <div className="fixed bottom-28 left-6 z-40 pointer-events-none">
       <AnimatePresence>
         {current && (
           <motion.div
