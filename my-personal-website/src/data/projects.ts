@@ -44,7 +44,7 @@ export const personalInfo = {
   github: "https://github.com/leechenwei",
   linkedin: "https://www.linkedin.com/in/lcw02/",
   resumeUrl: "/Lee_Chen_Wei_Resume.pdf",
-  bio: "I'm an Applied AI Engineer building production LLM-powered systems. I deployed a public Self-Evaluating Agentic RAG and shipped a multi-channel AI assistant with identity-scoped vector memory at Inside Advisory — turning agentic retrieval, automation, and full-stack engineering into tools that help SMEs digitalize and scale. Fresh graduate from University of Malaya, available immediately.",
+  bio: "I'm an Applied AI Engineer building production LLM-powered systems. I deployed a public Self-Evaluating Agentic RAG and shipped a multi-channel AI assistant with identity-scoped vector memory at Inside Advisory — turning agentic retrieval, automation, and full-stack engineering into tools that help SMEs digitalize and scale. Fresh graduate from University of Malaya — 2 weeks' notice period.",
   education: {
     university: "University of Malaya",
     degree: "Bachelor of Computer Science (Artificial Intelligence)",
