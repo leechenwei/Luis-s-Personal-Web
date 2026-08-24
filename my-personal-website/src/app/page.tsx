@@ -3,6 +3,7 @@
 import { Component, Suspense, lazy, type ReactNode } from "react";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navigation from "@/components/Navigation";
+import Overview from "@/components/Overview";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -49,6 +50,12 @@ export default function Home() {
         </Suspense>
       </ErrorBoundary>
 
+      {/* One-screen overview: the 10-second recruiter view */}
+      <section id="overview">
+        <Overview />
+      </section>
+
+      {/* Full portfolio below — unchanged */}
       <section id="hero">
         <Hero />
       </section>

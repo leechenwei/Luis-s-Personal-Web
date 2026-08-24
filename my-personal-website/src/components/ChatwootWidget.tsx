@@ -32,6 +32,28 @@ export default function ChatwootWidget() {
       window.chatwootSDK?.run({ websiteToken: WEBSITE_TOKEN, baseUrl: BASE_URL });
     };
     document.body.appendChild(script);
+
+    // The SDK renders the launcher in a shadow root and sometimes stamps a
+    // stale `top` that lands below the mobile viewport. Page CSS can't cross
+    // the shadow boundary, so re-anchor the bubble directly.
+    const anchorBubble = () => {
+      for (const host of document.body.querySelectorAll("*")) {
+        const root = (host as HTMLElement).shadowRoot;
+        if (!root) continue;
+        root.querySelectorAll<HTMLElement>(".woot-widget-bubble").forEach((el) => {
+          el.style.setProperty("top", "auto", "important");
+          el.style.setProperty("bottom", "24px", "important");
+        });
+      }
+    };
+    const interval = setInterval(anchorBubble, 1000);
+    const stop = setTimeout(() => clearInterval(interval), 45000);
+    window.addEventListener("resize", anchorBubble);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(stop);
+      window.removeEventListener("resize", anchorBubble);
+    };
   }, []);
 
   return null;
