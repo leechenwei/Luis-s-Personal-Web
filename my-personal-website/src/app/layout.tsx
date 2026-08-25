@@ -35,7 +35,7 @@ const PERSON_LD = {
   ],
   sameAs: [
     "https://github.com/leechenwei",
-    "https://www.linkedin.com/in/lcw02/",
+    "https://www.linkedin.com/in/luislcw02/",
   ],
 };
 

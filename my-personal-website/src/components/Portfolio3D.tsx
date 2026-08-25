@@ -798,7 +798,7 @@ export default function Portfolio3D() {
             `• ${personalInfo.email}`,
             `• ${personalInfo.phone} (WhatsApp)`,
             "• github.com/leechenwei",
-            "• linkedin.com/in/lcw02",
+            "• linkedin.com/in/luislcw02",
           ],
           accent: ACCENTS.emerald,
           footer: "E — say hello via WhatsApp",

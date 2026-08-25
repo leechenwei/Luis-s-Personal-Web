@@ -42,7 +42,7 @@ export const personalInfo = {
   phone: "+60 16-219 3255",
   whatsapp: "https://wa.me/60162193255",
   github: "https://github.com/leechenwei",
-  linkedin: "https://www.linkedin.com/in/lcw02/",
+  linkedin: "https://www.linkedin.com/in/luislcw02/",
   resumeUrl: "/Lee_Chen_Wei_Resume.pdf",
   bio: "I'm an Applied AI Engineer building production LLM-powered systems. I deployed a public Self-Evaluating Agentic RAG and shipped a multi-channel AI assistant with identity-scoped vector memory at Inside Advisory — turning agentic retrieval, automation, and full-stack engineering into tools that help SMEs digitalize and scale. Fresh graduate from University of Malaya — 2 weeks' notice period.",
   education: {
