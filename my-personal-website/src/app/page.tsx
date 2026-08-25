@@ -10,7 +10,6 @@ import Projects from "@/components/Projects";
 import Awards from "@/components/Awards";
 import Contact from "@/components/Contact";
 import AskAI from "@/components/AskAI";
-import VisitorTicker from "@/components/VisitorTicker";
 import ChatwootWidget from "@/components/ChatwootWidget";
 import AmbientBackground from "@/components/AmbientBackground";
 
@@ -51,7 +50,6 @@ export default function Home() {
       </section>
 
       <AskAI />
-      <VisitorTicker />
       <ChatwootWidget />
     </SmoothScroll>
   );
