@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FileText, Github, Linkedin, MessageCircle } from "lucide-react";
+import { FileText, Github, Linkedin, MessageCircle, ChevronDown, Gamepad2 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import Magnetic from "./Magnetic";
 import { personalInfo } from "@/data/projects";
 
 /* The 10-second recruiter view — first page of the dossier.
@@ -69,7 +70,7 @@ export default function Overview() {
             width={128}
             height={128}
             priority
-            className="w-[76px] h-[76px] md:w-32 md:h-32 rounded-full object-cover shrink-0 mt-1"
+            className="photo-in w-[76px] h-[76px] md:w-32 md:h-32 rounded-full object-cover shrink-0 mt-1"
           />
         </div>
         </ScrollReveal>
@@ -180,15 +181,26 @@ export default function Overview() {
             and architecture diagrams, an AI that answers questions about me
             with citations — and a 3D world you can walk.
           </p>
-          <p className="mt-2.5 font-mono-ui text-[12px] md:text-[13px]">
-            <a href="#hero" className={a}>
-              scroll for the full portfolio ↓
+          <div className="mt-3.5 flex flex-wrap gap-2 md:gap-2.5">
+            <Magnetic>
+            <a
+              href="#hero"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#2456F0]/35 dark:border-[#7C97FF]/40 bg-[#2456F0]/5 dark:bg-[#7C97FF]/10 text-[13px] md:text-sm font-medium text-[#2456F0] dark:text-[#7C97FF] hover:bg-[#2456F0]/12 dark:hover:bg-[#7C97FF]/20 transition-colors cursor-pointer"
+            >
+              <ChevronDown className="w-4 h-4 animate-bounce" />
+              Explore the full portfolio
             </a>
-            <span className="text-[#9CA3AF] dark:text-[#7A8194]">{"   ·   "}</span>
-            <Link href="/3d" className={a}>
-              enter the 3D world →
+            </Magnetic>
+            <Magnetic>
+            <Link
+              href="/3d"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#7C3AED]/35 dark:border-[#A78BFA]/40 bg-[#7C3AED]/5 dark:bg-[#A78BFA]/10 text-[13px] md:text-sm font-medium text-[#7C3AED] dark:text-[#A78BFA] hover:bg-[#7C3AED]/12 dark:hover:bg-[#A78BFA]/20 transition-colors cursor-pointer"
+            >
+              <Gamepad2 className="w-4 h-4" />
+              Enter the 3D world
             </Link>
-          </p>
+            </Magnetic>
+          </div>
         </div>
         </ScrollReveal>
       </div>

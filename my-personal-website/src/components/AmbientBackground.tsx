@@ -3,6 +3,8 @@
 export default function AmbientBackground() {
   return (
     <div aria-hidden className="fixed inset-0 -z-10 overflow-hidden">
+      <div className="aurora" />
+      <div className="grain" />
       <div
         className="blob"
         style={{

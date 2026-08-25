@@ -5,6 +5,7 @@ export const alt = "Lee Chen Wei (Luis) — Applied AI Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+/* Social share card in the light dossier style */
 export default function OGImage() {
   return new ImageResponse(
     (
@@ -15,91 +16,107 @@ export default function OGImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "80px",
-          background: "linear-gradient(135deg, #05070f 0%, #0b1024 60%, #101a3f 100%)",
+          padding: "72px 80px",
+          background: "#FAFAF8",
           fontFamily: "sans-serif",
+          position: "relative",
         }}
       >
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "16px",
-            marginBottom: "28px",
+            fontSize: "22px",
+            letterSpacing: "8px",
+            color: "#6B7280",
+            textTransform: "uppercase",
+            fontFamily: "monospace",
           }}
         >
-          <div
-            style={{
-              width: "14px",
-              height: "14px",
-              borderRadius: "50%",
-              background: "#3b82f6",
-              boxShadow: "0 0 24px #3b82f6",
-            }}
-          />
-          <div
-            style={{
-              fontSize: "26px",
-              letterSpacing: "8px",
-              color: "#8fa3d0",
-              textTransform: "uppercase",
-            }}
-          >
-            Applied AI Engineer
-          </div>
+          Portfolio · Dossier
         </div>
 
         <div
           style={{
-            fontSize: "84px",
+            fontSize: "88px",
             fontWeight: 800,
-            color: "#f4f6fb",
-            lineHeight: 1.05,
-            marginBottom: "24px",
+            color: "#1A1D23",
+            letterSpacing: "-3px",
+            marginTop: "14px",
+            display: "flex",
+            gap: "24px",
           }}
         >
-          Lee Chen Wei
+          <span>Lee Chen Wei</span>
+          <span style={{ color: "#2456F0" }}>(Luis)</span>
         </div>
 
         <div
           style={{
-            fontSize: "34px",
-            color: "#9aa4bf",
-            marginBottom: "48px",
-            maxWidth: "900px",
+            fontSize: "32px",
+            color: "#374151",
+            marginTop: "18px",
+            maxWidth: "960px",
+            lineHeight: 1.35,
+            display: "flex",
           }}
         >
-          Production LLM systems · Self-Evaluating Agentic RAG · Full-stack
-          SaaS for SMEs
+          Applied AI Engineer — I build LLM systems that run in production,
+          not in notebooks.
         </div>
 
-        <div style={{ display: "flex", gap: "14px" }}>
-          {["RAG", "LangGraph", "Next.js", "pgvector", "Supabase"].map(
-            (chip) => (
-              <div
-                key={chip}
-                style={{
-                  padding: "10px 24px",
-                  borderRadius: "999px",
-                  border: "2px solid rgba(59,130,246,0.45)",
-                  color: "#7ab3ff",
-                  fontSize: "24px",
-                  background: "rgba(59,130,246,0.10)",
-                }}
-              >
-                {chip}
-              </div>
-            )
-          )}
+        <div
+          style={{
+            marginTop: "40px",
+            paddingTop: "28px",
+            borderTop: "1px solid #E5E4E0",
+            display: "flex",
+            gap: "36px",
+            fontSize: "24px",
+            fontFamily: "monospace",
+            color: "#2456F0",
+          }}
+        >
+          <span>1 yr production AI</span>
+          <span style={{ color: "#D1D5DB" }}>·</span>
+          <span>11 systems live</span>
+          <span style={{ color: "#D1D5DB" }}>·</span>
+          <span>RM5k MRR</span>
+          <span style={{ color: "#D1D5DB" }}>·</span>
+          <span>CGPA 3.80</span>
         </div>
 
         <div
           style={{
             position: "absolute",
-            bottom: "48px",
+            bottom: "56px",
+            left: "80px",
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            fontSize: "22px",
+            fontFamily: "monospace",
+          }}
+        >
+          <div
+            style={{
+              width: "12px",
+              height: "12px",
+              borderRadius: "50%",
+              background: "#0E7C66",
+            }}
+          />
+          <span style={{ color: "#0E7C66" }}>
+            open to work — 2 weeks&apos; notice
+          </span>
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            bottom: "56px",
             right: "80px",
-            fontSize: "24px",
-            color: "#55618a",
+            fontSize: "22px",
+            color: "#2456F0",
+            fontWeight: 700,
           }}
         >
           luis-s-personal-web.vercel.app

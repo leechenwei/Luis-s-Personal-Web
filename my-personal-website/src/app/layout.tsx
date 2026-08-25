@@ -101,7 +101,7 @@ export default function RootLayout({
         {/* No-flash theme init: apply stored preference before paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.theme==="dark")document.documentElement.classList.add("dark")}catch(e){}`,
+            __html: `try{var t=localStorage.theme;if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}`,
           }}
         />
       </head>

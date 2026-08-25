@@ -63,9 +63,20 @@ export default function Contact() {
         </a>
       </div>
 
-      <p className="mt-16 pt-6 border-t border-[#E5E4E0] dark:border-[#252A36] font-mono-ui text-[11px] text-[#9CA3AF] dark:text-[#7A8194]">
-        © {new Date().getFullYear()} Lee Chen Wei · Selangor, Malaysia
-      </p>
+      <div className="mt-16 pt-6 border-t border-[#E5E4E0] dark:border-[#252A36]">
+        <nav className="flex flex-wrap gap-x-4 gap-y-1.5 font-mono-ui text-[11px] text-[#6B7280] dark:text-[#9AA1B2]">
+          <a href="#overview" className="hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors">top</a>
+          <a href="#about" className="hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors">about</a>
+          <a href="#experience" className="hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors">experience</a>
+          <a href="#projects" className="hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors">projects</a>
+          <a href="#awards" className="hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors">education</a>
+          <a href="/3d" className="hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors">3d world</a>
+          <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors">résumé</a>
+        </nav>
+        <p className="mt-4 font-mono-ui text-[11px] text-[#9CA3AF] dark:text-[#7A8194]">
+          © {new Date().getFullYear()} Lee Chen Wei · Selangor, Malaysia
+        </p>
+      </div>
       </ScrollReveal>
     </div>
   );

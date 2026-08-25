@@ -38,9 +38,21 @@ function Lightbox({
   }, [index, media.length, onClose, onNav]);
 
   const item = media[index];
+  const touchX = { v: 0 };
   return (
     <div
       onClick={onClose}
+      onTouchStart={(e) => (touchX.v = e.touches[0].clientX)}
+      onTouchEnd={(e) => {
+        const dx = e.changedTouches[0].clientX - touchX.v;
+        if (Math.abs(dx) > 40 && media.length > 1) {
+          onNav(
+            dx < 0
+              ? (index + 1) % media.length
+              : (index - 1 + media.length) % media.length
+          );
+        }
+      }}
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1A1D23]/95 p-4 md:p-10 cursor-zoom-out"
     >
       <button
@@ -68,6 +80,18 @@ function Lightbox({
           onClick={(e) => e.stopPropagation()}
           className="mt-3 flex items-center gap-4 cursor-default"
         >
+          <span className="flex items-center gap-1.5 mr-1">
+            {media.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => onNav(i)}
+                aria-label={`Image ${i + 1}`}
+                className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${
+                  i === index ? "bg-white" : "bg-white/30 hover:bg-white/60"
+                }`}
+              />
+            ))}
+          </span>
           <button
             onClick={() => onNav((index - 1 + media.length) % media.length)}
             aria-label="Previous"
