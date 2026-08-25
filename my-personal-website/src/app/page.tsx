@@ -1,6 +1,5 @@
 "use client";
 
-import { Component, Suspense, lazy, type ReactNode } from "react";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navigation from "@/components/Navigation";
 import Overview from "@/components/Overview";
@@ -14,41 +13,10 @@ import AskAI from "@/components/AskAI";
 import VisitorTicker from "@/components/VisitorTicker";
 import ChatwootWidget from "@/components/ChatwootWidget";
 
-const BackgroundEffects = lazy(() => import("@/components/BackgroundEffects"));
-
-class ErrorBoundary extends Component<
-  { children: ReactNode },
-  { hasError: boolean }
-> {
-  constructor(props: { children: ReactNode }) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: Error) {
-    console.warn("Background effects failed:", error);
-  }
-
-  render() {
-    if (this.state.hasError) return null;
-    return this.props.children;
-  }
-}
-
 export default function Home() {
   return (
     <SmoothScroll>
       <Navigation />
-
-      <ErrorBoundary>
-        <Suspense fallback={null}>
-          <BackgroundEffects />
-        </Suspense>
-      </ErrorBoundary>
 
       {/* One-screen overview: the 10-second recruiter view */}
       <section id="overview">

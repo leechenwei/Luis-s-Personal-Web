@@ -78,7 +78,7 @@ function CitedText({
                   key={j}
                   title={src ? `${src.source} — ${src.title}` : undefined}
                   onClick={() => src && onView(src.source)}
-                  className="inline-flex items-center justify-center min-w-4 h-4 px-1 mx-0.5 rounded bg-blue-500/25 border border-blue-400/40 text-blue-300 text-[9px] font-bold align-super cursor-pointer hover:bg-blue-500/40 transition-colors"
+                  className="inline-flex items-center justify-center min-w-4 h-4 px-1 mx-0.5 rounded bg-[#2456F0]/10 border border-[#2456F0]/30 text-[#2456F0] text-[9px] font-bold align-super cursor-pointer hover:bg-[#2456F0]/20 transition-colors"
                 >
                   {numStr}
                 </sup>
@@ -101,10 +101,10 @@ function SourceList({
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="mt-2 pt-2 border-t border-white/[0.06]">
+    <div className="mt-2 pt-2 border-t border-black/10">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex items-center gap-1 text-[10px] font-medium text-white/40 hover:text-white/70 transition-colors cursor-pointer"
+        className="inline-flex items-center gap-1 text-[10px] font-medium text-[#9CA3AF] hover:text-[#374151] transition-colors cursor-pointer"
       >
         <ChevronDown
           className={`w-3 h-3 transition-transform ${open ? "rotate-180" : ""}`}
@@ -117,23 +117,23 @@ function SourceList({
             <button
               key={s.n}
               onClick={() => onView(s.source)}
-              className="w-full flex items-center gap-2 text-[10px] rounded px-1 py-0.5 hover:bg-white/[0.05] transition-colors cursor-pointer text-left"
+              className="w-full flex items-center gap-2 text-[10px] rounded px-1 py-0.5 hover:bg-black/[0.03] transition-colors cursor-pointer text-left"
               title="View source content"
             >
-              <span className="shrink-0 w-4 h-4 rounded bg-blue-500/25 border border-blue-400/40 text-blue-300 font-bold flex items-center justify-center text-[9px]">
+              <span className="shrink-0 w-4 h-4 rounded bg-[#2456F0]/10 border border-[#2456F0]/30 text-[#2456F0] font-bold flex items-center justify-center text-[9px]">
                 {s.n}
               </span>
-              <span className="text-white/60 font-mono truncate">
+              <span className="text-[#6B7280] font-mono truncate">
                 {s.source}
               </span>
               <span className="ml-auto shrink-0 flex items-center gap-1.5">
-                <span className="w-12 h-1 rounded-full bg-white/10 overflow-hidden">
+                <span className="w-12 h-1 rounded-full bg-black/10 overflow-hidden">
                   <span
-                    className="block h-full rounded-full bg-blue-400/70"
+                    className="block h-full rounded-full bg-[#2456F0]/70"
                     style={{ width: `${Math.round(s.score * 100)}%` }}
                   />
                 </span>
-                <span className="text-white/30 w-7 text-right">
+                <span className="text-[#9CA3AF] w-7 text-right">
                   {Math.round(s.score * 100)}%
                 </span>
               </span>
@@ -245,7 +245,7 @@ export default function AskAI() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2, duration: 0.5 }}
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-violet-600 text-white text-sm font-semibold shadow-[0_0_28px_rgba(99,102,241,0.45)] hover:shadow-[0_0_40px_rgba(99,102,241,0.65)] transition-shadow cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#2456F0] text-white text-sm font-semibold shadow-lg hover:bg-[#1d47cc] transition-colors cursor-pointer"
         aria-label="Ask AI about Luis"
       >
         <Sparkles className="w-4 h-4" />
@@ -260,18 +260,18 @@ export default function AskAI() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.97 }}
             transition={{ duration: 0.22 }}
-            className="fixed bottom-24 right-6 z-50 w-[min(92vw,24rem)] h-[min(70vh,32rem)] flex flex-col rounded-2xl border border-white/10 bg-[#0b0f1d]/95 backdrop-blur-xl shadow-2xl overflow-hidden"
+            className="fixed bottom-24 right-6 z-50 w-[min(92vw,24rem)] h-[min(70vh,32rem)] flex flex-col rounded-2xl border border-[#E5E4E0] bg-white shadow-2xl overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center gap-3 px-4 py-3 border-b border-white/[0.06] bg-white/[0.03]">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center">
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-[#E5E4E0] bg-[#FAFAF8]">
+              <div className="w-8 h-8 rounded-lg bg-[#2456F0] flex items-center justify-center">
                 <Bot className="w-4 h-4 text-white" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-semibold text-white">
+                <p className="text-sm font-semibold text-[#1A1D23]">
                   Luis&apos;s AI Assistant
                 </p>
-                <p className="text-[10px] text-white/40">
+                <p className="text-[10px] text-[#9CA3AF]">
                   mini-RAG · cited answers · Gemini
                 </p>
               </div>
@@ -279,8 +279,8 @@ export default function AskAI() {
                 onClick={() => setView(view === "chat" ? "kb" : "chat")}
                 className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                   view === "kb"
-                    ? "text-blue-300 bg-blue-500/15"
-                    : "text-white/40 hover:text-white hover:bg-white/10"
+                    ? "text-[#2456F0] bg-[#2456F0]/10"
+                    : "text-[#9CA3AF] hover:text-[#1A1D23] hover:bg-black/5"
                 }`}
                 aria-label="Toggle knowledge base"
                 title="Knowledge base"
@@ -293,7 +293,7 @@ export default function AskAI() {
               </button>
               <button
                 onClick={() => setOpen(false)}
-                className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg text-[#9CA3AF] hover:text-[#1A1D23] hover:bg-black/5 transition-colors cursor-pointer"
                 aria-label="Close chat"
               >
                 <X className="w-4 h-4" />
@@ -303,7 +303,7 @@ export default function AskAI() {
             {view === "kb" ? (
               /* ---------------- Knowledge base view ---------------- */
               <div data-lenis-prevent className="flex-1 overflow-y-auto px-4 py-4">
-                <p className="text-[11px] text-white/50 mb-3">
+                <p className="text-[11px] text-[#6B7280] mb-3">
                   Every answer is grounded in these{" "}
                   {kb?.files.length ?? "…"} sources — built from the same data
                   that renders this site. Click a file to read it.
@@ -319,30 +319,30 @@ export default function AskAI() {
                           }
                           className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg border transition-colors cursor-pointer text-left ${
                             expanded
-                              ? "bg-blue-500/10 border-blue-400/30"
-                              : "bg-white/[0.03] border-white/[0.05] hover:border-white/[0.12]"
+                              ? "bg-[#2456F0]/5 border-[#2456F0]/40"
+                              : "bg-white border-[#E5E4E0] hover:border-[#9CA3AF]"
                           }`}
                         >
-                          <FileText className="w-3.5 h-3.5 text-blue-300/70 shrink-0" />
+                          <FileText className="w-3.5 h-3.5 text-[#2456F0]/70 shrink-0" />
                           <div className="min-w-0 flex-1">
-                            <p className="text-[11px] font-mono text-white/75 truncate">
+                            <p className="text-[11px] font-mono text-[#374151] truncate">
                               {f.source}
                             </p>
-                            <p className="text-[10px] text-white/35 truncate">
+                            <p className="text-[10px] text-[#9CA3AF] truncate">
                               {f.title}
                             </p>
                           </div>
-                          <span className="text-[9px] text-white/30 shrink-0">
+                          <span className="text-[9px] text-[#9CA3AF] shrink-0">
                             {f.words}w
                           </span>
                           <ChevronDown
-                            className={`w-3 h-3 text-white/30 shrink-0 transition-transform ${
+                            className={`w-3 h-3 text-[#9CA3AF] shrink-0 transition-transform ${
                               expanded ? "rotate-180" : ""
                             }`}
                           />
                         </button>
                         {expanded && (
-                          <pre className="mt-1 mb-2 px-3 py-2.5 rounded-lg bg-black/40 border border-white/[0.06] text-[10px] leading-relaxed text-white/60 whitespace-pre-wrap font-mono">
+                          <pre className="mt-1 mb-2 px-3 py-2.5 rounded-lg bg-[#FAFAF8] border border-[#E5E4E0] text-[10px] leading-relaxed text-[#374151] whitespace-pre-wrap font-mono">
                             {f.text}
                           </pre>
                         )}
@@ -351,8 +351,8 @@ export default function AskAI() {
                   })}
                 </div>
                 {kb && (
-                  <div className="mt-4 px-2.5 py-2.5 rounded-lg border border-blue-400/15 bg-blue-500/[0.06] text-[10px] leading-relaxed text-white/45">
-                    <p className="font-semibold text-blue-300/80 mb-1">
+                  <div className="mt-4 px-2.5 py-2.5 rounded-lg border border-[#2456F0]/20 bg-[#2456F0]/5 text-[10px] leading-relaxed text-[#6B7280]">
+                    <p className="font-semibold text-[#2456F0] mb-1">
                       Pipeline
                     </p>
                     <p>Chunking: {kb.pipeline.chunking}</p>
@@ -378,8 +378,8 @@ export default function AskAI() {
                     <div
                       className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-[13px] leading-relaxed whitespace-pre-wrap ${
                         m.role === "user"
-                          ? "bg-blue-600 text-white rounded-br-sm"
-                          : "bg-white/[0.06] border border-white/[0.06] text-white/85 rounded-bl-sm"
+                          ? "bg-[#2456F0] text-white rounded-br-sm"
+                          : "bg-[#F3F4F6] text-[#1A1D23] rounded-bl-sm"
                       }`}
                     >
                       {m.role === "assistant" ? (
@@ -404,12 +404,12 @@ export default function AskAI() {
                 ))}
                 {busy && (
                   <div className="flex justify-start">
-                    <div className="px-4 py-3 rounded-2xl rounded-bl-sm bg-white/[0.06] border border-white/[0.06]">
+                    <div className="px-4 py-3 rounded-2xl rounded-bl-sm bg-[#F3F4F6]">
                       <span className="inline-flex gap-1">
                         {[0, 1, 2].map((d) => (
                           <span
                             key={d}
-                            className="w-1.5 h-1.5 rounded-full bg-white/50 animate-bounce"
+                            className="w-1.5 h-1.5 rounded-full bg-[#9CA3AF] animate-bounce"
                             style={{ animationDelay: `${d * 0.15}s` }}
                           />
                         ))}
@@ -424,7 +424,7 @@ export default function AskAI() {
                       <button
                         key={s}
                         onClick={() => send(s)}
-                        className="text-[11px] px-3 py-1.5 rounded-full border border-blue-400/30 text-blue-300/90 hover:bg-blue-500/15 transition-colors cursor-pointer"
+                        className="text-[11px] px-3 py-1.5 rounded-full border border-[#2456F0]/30 text-[#2456F0] hover:bg-[#2456F0]/5 transition-colors cursor-pointer"
                       >
                         {s}
                       </button>
@@ -440,7 +440,7 @@ export default function AskAI() {
                 e.preventDefault();
                 send();
               }}
-              className="flex items-center gap-2 px-3 py-3 border-t border-white/[0.06] bg-white/[0.02]"
+              className="flex items-center gap-2 px-3 py-3 border-t border-[#E5E4E0] bg-[#FAFAF8]"
             >
               <input
                 ref={inputRef}
@@ -448,12 +448,12 @@ export default function AskAI() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about experience, projects, skills…"
                 maxLength={500}
-                className="flex-1 bg-white/[0.05] border border-white/[0.08] rounded-xl px-3.5 py-2.5 text-[13px] text-white placeholder:text-white/30 outline-none focus:border-blue-400/50 transition-colors"
+                className="flex-1 bg-white border border-[#E5E4E0] rounded-xl px-3.5 py-2.5 text-[13px] text-[#1A1D23] placeholder:text-[#9CA3AF] outline-none focus:border-[#2456F0]/60 transition-colors"
               />
               <button
                 type="submit"
                 disabled={busy || !input.trim()}
-                className="p-2.5 rounded-xl bg-blue-600 text-white disabled:opacity-30 hover:bg-blue-500 transition-colors cursor-pointer"
+                className="p-2.5 rounded-xl bg-[#2456F0] text-white disabled:opacity-30 hover:bg-[#1d47cc] transition-colors cursor-pointer"
                 aria-label="Send"
               >
                 <Send className="w-4 h-4" />

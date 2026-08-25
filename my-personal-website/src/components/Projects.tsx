@@ -1,16 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import ScrollReveal from "./ScrollReveal";
 import ProjectCard from "./ProjectCard";
 import { projects } from "@/data/projects";
 
 const filters = [
-  { key: "all", label: "All" },
-  { key: "ai", label: "AI" },
-  { key: "fullstack", label: "Full Stack" },
-  { key: "enterprise", label: "Enterprise" },
+  { key: "all", label: "all" },
+  { key: "ai", label: "ai" },
+  { key: "fullstack", label: "full-stack" },
+  { key: "enterprise", label: "enterprise" },
 ] as const;
 
 export default function Projects() {
@@ -22,59 +20,31 @@ export default function Projects() {
       : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <div className="container mx-auto px-6 py-32 max-w-6xl">
-      <ScrollReveal>
-        <h2 className="text-3xl md:text-4xl font-bold gradient-text inline-block">
-          Projects
-        </h2>
-      </ScrollReveal>
-
-      <ScrollReveal delay={0.1}>
-        <p className="text-muted-foreground mt-4 max-w-lg mb-8">
-          A selection of production systems I&apos;ve built — from AI-powered
-          platforms to enterprise management solutions.
-        </p>
-      </ScrollReveal>
-
-      {/* Filter tabs */}
-      <ScrollReveal delay={0.15}>
-        <div className="flex gap-2 mb-12 flex-wrap">
+    <div className="container mx-auto px-6 py-14 md:py-20 max-w-4xl">
+      <div className="flex flex-wrap items-baseline justify-between gap-3">
+        <p className="eyebrow">Projects · {projects.length} systems</p>
+        <div className="font-mono-ui text-[12px] flex gap-4">
           {filters.map(({ key, label }) => (
             <button
               key={key}
               onClick={() => setActiveFilter(key)}
-              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer border ${
+              className={`cursor-pointer transition-colors ${
                 activeFilter === key
-                  ? "bg-electric-blue/10 text-electric-blue border-electric-blue/30 shadow-glow-blue"
-                  : "bg-white/[0.02] text-muted-foreground/60 border-white/[0.06] hover:border-white/[0.1] hover:text-muted-foreground"
+                  ? "text-[#2456F0] underline underline-offset-4"
+                  : "text-[#9CA3AF] hover:text-[#374151]"
               }`}
             >
               {label}
             </button>
           ))}
         </div>
-      </ScrollReveal>
+      </div>
 
-      {/* Project grid */}
-      <motion.div
-        layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
-        <AnimatePresence mode="popLayout">
-          {filtered.map((project, i) => (
-            <motion.div
-              key={project.id}
-              layout
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -10 }}
-              transition={{ duration: 0.35, delay: i * 0.04 }}
-            >
-              <ProjectCard project={project} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+      <div className="mt-3 border-t border-[#1A1D23]">
+        {filtered.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
     </div>
   );
 }

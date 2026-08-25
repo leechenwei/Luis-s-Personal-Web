@@ -2,28 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------------------------------------------ */
+/*  "Engineering Dossier" light theme                                  */
+/*  paper #FAFAF8 · ink #1A1D23 · cobalt #2456F0 · live-green #0E7C66  */
+/* ------------------------------------------------------------------ */
+
 @layer base {
   :root {
-    --background: 240 10% 4%;
-    --foreground: 210 40% 98%;
-    --card: 240 6% 8%;
-    --card-foreground: 210 40% 98%;
-    --popover: 240 6% 8%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 240 10% 4%;
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 240 4% 16%;
-    --muted-foreground: 215 14% 55%;
-    --accent: 263 70% 58%;
-    --accent-foreground: 210 40% 98%;
+    --background: 45 20% 98%;
+    --foreground: 222 15% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 15% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 15% 12%;
+    --primary: 224 87% 54%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 10% 94%;
+    --secondary-foreground: 222 15% 12%;
+    --muted: 45 10% 94%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 224 87% 54%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 217 91% 60%;
-    --radius: 0.75rem;
+    --destructive-foreground: 0 0% 100%;
+    --border: 45 8% 89%;
+    --input: 45 8% 89%;
+    --ring: 224 87% 54%;
+    --radius: 0.5rem;
   }
 
   * {
@@ -40,53 +45,36 @@
 }
 
 @layer utilities {
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899);
+  /* Display face for headings and big numbers */
+  .font-display {
+    font-family: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.02em;
   }
 
-  .gradient-text-blue {
+  /* Mono for labels, metrics, statuses — the dossier texture */
+  .font-mono-ui {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+      monospace;
+  }
+
+  .eyebrow {
+    @apply font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[#6B7280];
+  }
+
+  /* Legacy utilities kept for the 3D page & transitional components */
+  .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #3B82F6, #60A5FA);
+    background-image: linear-gradient(135deg, #2456f0, #6d28d9);
   }
 
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl;
-  }
-
-  .glow-border {
-    position: relative;
-  }
-
-  .glow-border::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .glow-border:hover::before {
-    opacity: 1;
+    @apply bg-white border border-[#E5E4E0] rounded-xl;
   }
 
   .grid-bg {
-    background-image:
-      linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(36, 86, 240, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(36, 86, 240, 0.04) 1px, transparent 1px);
     background-size: 60px 60px;
-  }
-
-  .dot-bg {
-    background-image: radial-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px);
-    background-size: 32px 32px;
   }
 }
 
@@ -99,4 +87,11 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Kill horizontal overflow from decorative layouts — a dark gutter showed on
+   mobile pinch-zoom-out. `clip` (not `hidden`) so no scroll container forms. */
+html,
+body {
+  overflow-x: clip;
 }

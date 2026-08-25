@@ -101,16 +101,16 @@ export default function VisitorTicker() {
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.35 }}
-            className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-white/10 bg-[#0b0f1d]/90 backdrop-blur-md shadow-lg"
+            className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#E5E4E0] bg-white/95 backdrop-blur-md shadow-md"
           >
             <span className="relative flex w-2 h-2">
               <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-60 animate-ping" />
               <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-400" />
             </span>
-            <Eye className="w-3.5 h-3.5 text-white/40" />
-            <p className="text-xs text-white/70">
+            <Eye className="w-3.5 h-3.5 text-[#9CA3AF]" />
+            <p className="text-xs text-[#374151]">
               {label(current)}{" "}
-              <span className="text-white/35">· {ago(current.ts)}</span>
+              <span className="text-[#9CA3AF]">· {ago(current.ts)}</span>
             </p>
           </motion.div>
         )}

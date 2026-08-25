@@ -71,7 +71,7 @@ export default function Navigation() {
               <span
                 className={`text-xs font-medium transition-all duration-300 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 ${
                   activeSection === id
-                    ? "text-electric-blue"
+                    ? "text-[#2456F0]"
                     : "text-muted-foreground"
                 }`}
               >
@@ -80,7 +80,7 @@ export default function Navigation() {
               <span
                 className={`block rounded-full transition-all duration-300 ${
                   activeSection === id
-                    ? "w-3 h-3 bg-electric-blue shadow-glow-blue"
+                    ? "w-3 h-3 bg-[#2456F0]"
                     : "w-2 h-2 bg-muted-foreground/40 group-hover:bg-muted-foreground"
                 }`}
               />

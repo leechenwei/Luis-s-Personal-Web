@@ -1,76 +1,44 @@
-"use client";
-
-import { motion } from "framer-motion";
-import ScrollReveal from "./ScrollReveal";
 import { personalInfo, techStack } from "@/data/projects";
 
-const categoryColors: Record<string, string> = {
-  language: "from-blue-500/20 to-blue-600/10 border-blue-500/20",
-  frontend: "from-purple-500/20 to-purple-600/10 border-purple-500/20",
-  backend: "from-green-500/20 to-green-600/10 border-green-500/20",
-  ai: "from-amber-500/20 to-amber-600/10 border-amber-500/20",
-  devops: "from-cyan-500/20 to-cyan-600/10 border-cyan-500/20",
+/* Bio + the skills table — real table, hairline rules, mono data. */
+
+const AREA_LABELS: Record<string, string> = {
+  ai: "AI / LLM",
+  language: "Languages",
+  frontend: "Frontend",
+  backend: "Backend & data",
+  devops: "Infra & testing",
 };
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.06 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
+const AREA_ORDER = ["ai", "language", "frontend", "backend", "devops"];
 
 export default function About() {
+  const grouped = AREA_ORDER.map((area) => ({
+    area: AREA_LABELS[area],
+    tools: techStack.filter((t) => t.category === area).map((t) => t.name),
+  })).filter((g) => g.tools.length);
+
   return (
-    <div className="container mx-auto px-6 py-32 max-w-4xl">
-      <ScrollReveal>
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text inline-block">
-          About Me
-        </h2>
-      </ScrollReveal>
+    <div className="container mx-auto px-6 py-14 md:py-20 max-w-4xl">
+      <p className="eyebrow">About</p>
+      <p className="mt-4 text-[15px] md:text-lg leading-relaxed text-[#374151] max-w-2xl">
+        {personalInfo.bio}
+      </p>
 
-      <ScrollReveal delay={0.1}>
-        <p className="text-lg text-muted-foreground leading-relaxed mb-16 max-w-2xl">
-          {personalInfo.bio}
-        </p>
-      </ScrollReveal>
-
-      <ScrollReveal delay={0.2}>
-        <h3 className="text-sm uppercase tracking-widest text-muted-foreground/60 mb-6">
-          Tech Stack
-        </h3>
-      </ScrollReveal>
-
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3"
-      >
-        {techStack.map((tech) => (
-          <motion.div
-            key={tech.name}
-            variants={itemVariants}
-            className={`group relative px-4 py-3 rounded-xl border bg-gradient-to-b ${
-              categoryColors[tech.category] || categoryColors.language
-            } hover:shadow-glow-blue transition-all duration-300 cursor-default text-center`}
+      <p className="eyebrow mt-12 md:mt-16">Tech stack</p>
+      <div className="mt-3 border-t border-[#1A1D23]">
+        {grouped.map((g) => (
+          <div
+            key={g.area}
+            className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-1 md:gap-6 py-3.5 border-b border-[#E5E4E0]"
           >
-            <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground transition-colors">
-              {tech.name}
-            </span>
-          </motion.div>
+            <p className="font-semibold text-sm text-[#1A1D23]">{g.area}</p>
+            <p className="font-mono-ui text-[12px] md:text-[13px] leading-relaxed text-[#6B7280]">
+              {g.tools.join(" · ")}
+            </p>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

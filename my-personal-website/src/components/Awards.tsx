@@ -1,178 +1,77 @@
-"use client";
-
-import { motion } from "framer-motion";
-import ScrollReveal from "./ScrollReveal";
-import { awards, personalInfo } from "@/data/projects";
 import Image from "next/image";
-import { Trophy, GraduationCap, Code2, MapPin, Calendar, FileText } from "lucide-react";
+import { awards, personalInfo } from "@/data/projects";
 
-const typeConfig: Record<
-  string,
-  { icon: React.ComponentType<{ className?: string }>; color: string }
-> = {
-  hackathon: { icon: Trophy, color: "text-amber-400" },
-  academic: { icon: GraduationCap, color: "text-blue-400" },
-  competition: { icon: Code2, color: "text-purple-400" },
-};
+/* Education + honors as a clean two-column ledger. */
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.06 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
+const a = "text-[#2456F0] underline underline-offset-[3px] decoration-[#2456F0]/30 hover:decoration-[#2456F0]";
 
 export default function Awards() {
   const edu = personalInfo.education;
 
   return (
-    <div className="container mx-auto px-6 py-32 max-w-4xl">
-      <div className="grid md:grid-cols-2 gap-16">
+    <div className="container mx-auto px-6 py-14 md:py-20 max-w-4xl">
+      <div className="grid md:grid-cols-2 gap-12 md:gap-16">
         {/* Education */}
         <div>
-          <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 gradient-text inline-block">
-              Education
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
-            <div className="glass-card p-6 hover:shadow-glow-card transition-shadow duration-500">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-20 h-20 rounded-xl bg-white p-2 flex items-center justify-center shrink-0 overflow-hidden">
-                  <Image
-                    src="/images/um-logo.png"
-                    alt="University of Malaya"
-                    width={72}
-                    height={72}
-                    className="object-contain"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.style.display = "none";
-                      const fallback = target.nextElementSibling as HTMLElement;
-                      if (fallback) fallback.style.display = "flex";
-                    }}
-                  />
-                  <div className="hidden items-center justify-center w-full h-full">
-                    <GraduationCap className="w-8 h-8 text-blue-400" />
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-bold text-foreground">
-                    {edu.university}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {edu.degree}
-                  </p>
-                </div>
+          <p className="eyebrow">Education</p>
+          <div className="mt-3 border-t border-[#1A1D23] pt-5">
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-lg bg-white border border-[#E5E4E0] p-1.5 flex items-center justify-center shrink-0">
+                <Image
+                  src="/images/um-logo.png"
+                  alt="University of Malaya"
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                />
               </div>
-
-              <div className="flex flex-wrap gap-4 text-xs text-muted-foreground/60 mb-4">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
-                  {edu.period}
-                </span>
-                <span className="flex items-center gap-1">
-                  <MapPin className="w-3 h-3" />
-                  {edu.location}
-                </span>
-              </div>
-
-              {/* CGPA highlight */}
-              <div className="bg-gradient-to-r from-electric-blue/10 to-electric-purple/10 rounded-xl px-4 py-3 border border-electric-blue/10">
-                <p className="text-xs text-muted-foreground/50 mb-1">CGPA</p>
-                <p className="text-2xl font-bold gradient-text inline-block">
-                  {edu.cgpa}
-                </p>
-              </div>
-
-              {/* Credentials */}
-              <div className="mt-4 pt-4 border-t border-white/[0.04]">
-                <p className="text-xs text-muted-foreground/40 mb-2">Credentials</p>
-                <div className="flex flex-wrap gap-2">
-                  <a
-                    href={edu.transcriptUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-muted-foreground/70 hover:text-electric-blue hover:border-electric-blue/30 transition-colors duration-300 cursor-pointer"
-                  >
-                    <FileText className="w-3 h-3" />
-                    Transcript
-                  </a>
-                  <a
-                    href={edu.diplomaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-muted-foreground/70 hover:text-electric-blue hover:border-electric-blue/30 transition-colors duration-300 cursor-pointer"
-                  >
-                    <FileText className="w-3 h-3" />
-                    Diploma
-                  </a>
-                </div>
-              </div>
-
-              {/* Languages */}
-              <div className="mt-4 pt-4 border-t border-white/[0.04]">
-                <p className="text-xs text-muted-foreground/40 mb-2">Languages</p>
-                <div className="flex gap-2">
-                  {personalInfo.languages.map((lang) => (
-                    <span
-                      key={lang}
-                      className="text-xs px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] text-muted-foreground/70"
-                    >
-                      {lang}
-                    </span>
-                  ))}
-                </div>
+              <div>
+                <h3 className="font-display font-bold text-[#1A1D23]">
+                  {edu.university}
+                </h3>
+                <p className="text-sm text-[#6B7280] mt-0.5">{edu.degree}</p>
               </div>
             </div>
-          </ScrollReveal>
+            <div className="mt-4 font-mono-ui text-[12px] text-[#6B7280] space-y-1">
+              <p>{edu.period}</p>
+              <p>
+                CGPA{" "}
+                <span className="text-[#2456F0] font-semibold">{edu.cgpa}</span>{" "}
+                · 6× Dean&apos;s List
+              </p>
+              <p>{edu.location}</p>
+            </div>
+            <p className="mt-4 font-mono-ui text-[12px]">
+              <a href={edu.transcriptUrl} target="_blank" rel="noopener noreferrer" className={a}>
+                transcript ↗
+              </a>
+              <span className="text-[#D1D5DB]">{"   ·   "}</span>
+              <a href={edu.diplomaUrl} target="_blank" rel="noopener noreferrer" className={a}>
+                diploma ↗
+              </a>
+            </p>
+            <p className="mt-4 text-[13px] text-[#6B7280]">
+              Languages: {personalInfo.languages.join(" · ")}
+            </p>
+          </div>
         </div>
 
         {/* Awards */}
         <div>
-          <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 gradient-text inline-block">
-              Awards
-            </h2>
-          </ScrollReveal>
-
-          <motion.ul
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
-            className="space-y-2"
-          >
-            {awards.map((award) => {
-              const config = typeConfig[award.type] || typeConfig.hackathon;
-              const Icon = config.icon;
-              return (
-                <motion.li
-                  key={award.title}
-                  variants={itemVariants}
-                  className="glass-card px-4 py-3 flex items-center gap-3 hover:shadow-glow-card transition-shadow duration-500"
-                >
-                  <Icon className={`w-4 h-4 shrink-0 ${config.color}`} />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-foreground/90 truncate">
-                      {award.title}
-                    </p>
-                  </div>
-                  <span className="text-xs text-muted-foreground/50 shrink-0">
-                    {award.year}
-                  </span>
-                </motion.li>
-              );
-            })}
-          </motion.ul>
+          <p className="eyebrow">Honors</p>
+          <div className="mt-3 border-t border-[#1A1D23]">
+            {awards.map((award) => (
+              <div
+                key={award.title}
+                className="flex items-baseline justify-between gap-4 py-2.5 border-b border-[#E5E4E0]"
+              >
+                <p className="text-[13px] text-[#374151]">{award.title}</p>
+                <p className="font-mono-ui text-[11px] text-[#9CA3AF] shrink-0">
+                  {award.year}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
