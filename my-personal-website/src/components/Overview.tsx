@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FileText, Github, Linkedin, MessageCircle } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { personalInfo } from "@/data/projects";
 
@@ -131,25 +132,46 @@ export default function Overview() {
 
         </ScrollReveal>
 
-        {/* Contact links */}
+        {/* Contact actions */}
         <ScrollReveal delay={0.22} duration={0.5}>
-        <p className="mt-6 md:mt-8 text-sm md:text-[15px]">
-          <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer" className={a}>
+        <div className="mt-6 md:mt-8 flex flex-wrap gap-2 md:gap-2.5">
+          <a
+            href={personalInfo.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#2456F0] text-white text-[13px] md:text-sm font-medium hover:bg-[#1d47cc] shadow-sm transition-colors cursor-pointer"
+          >
+            <FileText className="w-4 h-4" />
             Résumé (PDF)
           </a>
-          {" · "}
-          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className={a}>
+          <a
+            href={personalInfo.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E5E4E0] dark:border-[#252A36] bg-white dark:bg-[#161A24] text-[13px] md:text-sm text-[#374151] dark:text-[#C3C8D4] hover:border-[#2456F0]/40 dark:hover:border-[#7C97FF]/50 hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors cursor-pointer"
+          >
+            <Github className="w-4 h-4" />
             GitHub
           </a>
-          {" · "}
-          <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className={a}>
+          <a
+            href={personalInfo.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E5E4E0] dark:border-[#252A36] bg-white dark:bg-[#161A24] text-[13px] md:text-sm text-[#374151] dark:text-[#C3C8D4] hover:border-[#2456F0]/40 dark:hover:border-[#7C97FF]/50 hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors cursor-pointer"
+          >
+            <Linkedin className="w-4 h-4" />
             LinkedIn
           </a>
-          {" · "}
-          <a href={personalInfo.whatsapp} target="_blank" rel="noopener noreferrer" className={a}>
+          <a
+            href={personalInfo.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E5E4E0] dark:border-[#252A36] bg-white dark:bg-[#161A24] text-[13px] md:text-sm text-[#374151] dark:text-[#C3C8D4] hover:border-[#0E7C66]/50 hover:text-[#0E7C66] dark:hover:text-[#37D3A8] transition-colors cursor-pointer"
+          >
+            <MessageCircle className="w-4 h-4 text-[#0E7C66] dark:text-[#37D3A8]" />
             WhatsApp me
           </a>
-        </p>
+        </div>
 
         {/* Gateway */}
         <div className="mt-8 md:mt-10 pt-4 border-t border-[#E5E4E0] dark:border-[#252A36]">
