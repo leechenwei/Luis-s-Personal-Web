@@ -120,3 +120,8 @@ body {
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Custom cursor active: hide native cursor (dot+ring replace it) */
+.custom-cursor, .custom-cursor * {
+  cursor: none !important;
+}

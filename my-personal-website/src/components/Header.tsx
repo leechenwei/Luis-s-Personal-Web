@@ -48,44 +48,14 @@ export default function Header() {
 
   return (
     <>
-      {/* Top bar: identity + theme; section links only on small screens */}
-      <header className="fixed top-0 inset-x-0 z-50 border-b border-[#E5E4E0] dark:border-[#252A36] bg-[#FAFAF8]/85 dark:bg-[#10131B]/85 backdrop-blur-md">
-        <div className="mx-auto max-w-5xl px-5 md:px-6 h-12 md:h-14 flex items-center justify-between gap-4">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="font-display font-bold text-[#2456F0] dark:text-[#7C97FF] text-lg cursor-pointer"
-            aria-label="Back to top"
-          >
-            Luis
-          </button>
-
-          <div className="flex items-center gap-1">
-            {/* Mobile fallback: horizontal links */}
-            <nav className="flex lg:hidden items-center gap-1 overflow-x-auto">
-              {SECTIONS.slice(1).map(({ id, label }) => (
-                <button
-                  key={id}
-                  onClick={() => scrollTo(id)}
-                  className={`px-2 py-1.5 rounded-md text-[12px] whitespace-nowrap transition-colors cursor-pointer ${
-                    active === id
-                      ? "text-[#2456F0] dark:text-[#7C97FF] font-semibold"
-                      : "text-[#6B7280] dark:text-[#9AA1B2]"
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
-            </nav>
-            <button
-              onClick={toggle}
-              aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
-              className="ml-1 p-2 rounded-lg border border-[#E5E4E0] dark:border-[#252A36] bg-white dark:bg-[#161A24] text-[#6B7280] dark:text-[#C3C8D4] hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors cursor-pointer"
-            >
-              {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* Floating theme toggle — no header bar */}
+      <button
+        onClick={toggle}
+        aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+        className="fixed top-4 right-4 md:top-5 md:right-6 z-50 p-2.5 rounded-full border border-[#E5E4E0] dark:border-[#252A36] bg-white/85 dark:bg-[#161A24]/85 backdrop-blur-md text-[#6B7280] dark:text-[#C3C8D4] hover:text-[#2456F0] dark:hover:text-[#7C97FF] shadow-sm transition-colors cursor-pointer"
+      >
+        {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+      </button>
 
       {/* Right-edge rail: scroll-spy section headers (desktop) */}
       <nav

@@ -1,6 +1,43 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+
+/* JSON-LD Person entity: tells search engines this site, the GitHub and the
+   LinkedIn are the same Lee Chen Wei — improves name-search results. */
+const PERSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Lee Chen Wei",
+  alternateName: "Luis",
+  jobTitle: "Applied AI Engineer",
+  url: "https://luis-s-personal-web.vercel.app",
+  email: "mailto:LuisLCW02@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "Selangor",
+    addressCountry: "MY",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "University of Malaya",
+  },
+  worksFor: {
+    "@type": "Organization",
+    name: "Inside Advisory Sdn Bhd",
+  },
+  knowsAbout: [
+    "Retrieval-Augmented Generation",
+    "Large Language Models",
+    "LangGraph",
+    "Next.js",
+    "Supabase",
+  ],
+  sameAs: [
+    "https://github.com/leechenwei",
+    "https://www.linkedin.com/in/lcw02/",
+  ],
+};
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,6 +71,9 @@ export const metadata: Metadata = {
     "Malaysia",
   ],
   authors: [{ name: "Lee Chen Wei" }],
+  verification: {
+    google: "JPSoQMt5fLUHsviBVZ5p1_ETlXFcamo7quNIuW2dz0M",
+  },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -66,7 +106,12 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${grotesk.variable} font-sans`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_LD) }}
+        />
         {children}
+        <Analytics />
       </body>
     </html>
   );
