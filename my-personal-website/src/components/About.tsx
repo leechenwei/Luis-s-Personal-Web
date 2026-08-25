@@ -1,4 +1,5 @@
 import { personalInfo, techStack } from "@/data/projects";
+import ScrollReveal from "./ScrollReveal";
 
 /* Bio + the skills table — real table, hairline rules, mono data. */
 
@@ -20,11 +21,14 @@ export default function About() {
 
   return (
     <div className="container mx-auto px-6 py-14 md:py-20 max-w-4xl">
+      <ScrollReveal>
       <p className="eyebrow">About</p>
       <p className="mt-4 text-[15px] md:text-lg leading-relaxed text-[#374151] max-w-2xl">
         {personalInfo.bio}
       </p>
+      </ScrollReveal>
 
+      <ScrollReveal delay={0.08}>
       <p className="eyebrow mt-12 md:mt-16">Tech stack</p>
       <div className="mt-3 border-t border-[#1A1D23]">
         {grouped.map((g) => (
@@ -39,6 +43,7 @@ export default function About() {
           </div>
         ))}
       </div>
+      </ScrollReveal>
     </div>
   );
 }

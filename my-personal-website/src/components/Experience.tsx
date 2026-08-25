@@ -1,4 +1,5 @@
 import { experiences } from "@/data/projects";
+import ScrollReveal from "./ScrollReveal";
 
 /* Experience as a ruled ledger: mono dates in the margin, ink content. */
 
@@ -7,9 +8,9 @@ export default function Experience() {
     <div className="container mx-auto px-6 py-14 md:py-20 max-w-4xl">
       <p className="eyebrow">Experience</p>
       <div className="mt-3 border-t border-[#1A1D23]">
-        {experiences.map((exp) => (
+        {experiences.map((exp, i) => (
+          <ScrollReveal key={exp.company} delay={Math.min(i * 0.06, 0.18)}>
           <div
-            key={exp.company}
             className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 md:gap-6 py-6 md:py-8 border-b border-[#E5E4E0]"
           >
             <div>
@@ -37,6 +38,7 @@ export default function Experience() {
               </ul>
             </div>
           </div>
+          </ScrollReveal>
         ))}
       </div>
     </div>

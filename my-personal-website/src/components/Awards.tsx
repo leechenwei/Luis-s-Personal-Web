@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ScrollReveal from "./ScrollReveal";
 import { awards, personalInfo } from "@/data/projects";
 
 /* Education + honors as a clean two-column ledger. */
@@ -12,6 +13,7 @@ export default function Awards() {
     <div className="container mx-auto px-6 py-14 md:py-20 max-w-4xl">
       <div className="grid md:grid-cols-2 gap-12 md:gap-16">
         {/* Education */}
+        <ScrollReveal>
         <div>
           <p className="eyebrow">Education</p>
           <div className="mt-3 border-t border-[#1A1D23] pt-5">
@@ -55,8 +57,10 @@ export default function Awards() {
             </p>
           </div>
         </div>
+        </ScrollReveal>
 
         {/* Awards */}
+        <ScrollReveal delay={0.1}>
         <div>
           <p className="eyebrow">Honors</p>
           <div className="mt-3 border-t border-[#1A1D23]">
@@ -73,6 +77,7 @@ export default function Awards() {
             ))}
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </div>
   );

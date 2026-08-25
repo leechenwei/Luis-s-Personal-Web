@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ProjectCard from "./ProjectCard";
+import ScrollReveal from "./ScrollReveal";
 import { projects } from "@/data/projects";
 
 const filters = [
@@ -42,7 +43,9 @@ export default function Projects() {
 
       <div className="mt-3 border-t border-[#1A1D23]">
         {filtered.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ScrollReveal key={project.id}>
+            <ProjectCard project={project} />
+          </ScrollReveal>
         ))}
       </div>
     </div>

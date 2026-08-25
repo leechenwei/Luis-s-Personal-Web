@@ -96,7 +96,10 @@ export default function ProjectCard({ project }: { project: Project }) {
   const s = status(project);
 
   return (
-    <article className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 md:gap-6 py-7 md:py-9 border-b border-[#E5E4E0]">
+    <article
+      id={`project-${project.id}`}
+      className="group grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 md:gap-6 py-7 md:py-9 border-b border-[#E5E4E0] scroll-mt-24 -mx-4 px-4 rounded-lg hover:bg-white/70 transition-colors duration-300"
+    >
       {/* Margin: status + classification */}
       <div className="flex md:flex-col items-baseline md:items-start gap-3 md:gap-1.5">
         <p
@@ -114,7 +117,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       {/* Content */}
       <div className="min-w-0">
-        <h3 className="font-display text-lg md:text-xl font-bold text-[#1A1D23]">
+        <h3 className="font-display text-lg md:text-xl font-bold text-[#1A1D23] group-hover:text-[#2456F0] transition-colors duration-300">
           {project.title}
         </h3>
         <p className="text-sm text-[#6B7280] mt-0.5">{project.tagline}</p>
@@ -147,7 +150,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               <button
                 key={m.src}
                 onClick={() => setLightbox(i)}
-                className="w-32 md:w-40 aspect-video overflow-hidden rounded-md border border-[#E5E4E0] hover:border-[#2456F0]/50 transition-colors cursor-zoom-in bg-white"
+                className="group/thumb w-32 md:w-40 aspect-video overflow-hidden rounded-md border border-[#E5E4E0] hover:border-[#2456F0]/50 transition-colors cursor-zoom-in bg-white"
                 aria-label={`View: ${m.alt}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -155,7 +158,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                   src={m.src}
                   alt={m.alt}
                   loading="lazy"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top group-hover/thumb:scale-105 transition-transform duration-300"
                 />
               </button>
             ))}

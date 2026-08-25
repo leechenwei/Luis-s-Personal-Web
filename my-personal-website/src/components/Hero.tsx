@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ScrollReveal from "./ScrollReveal";
 import Link from "next/link";
 import { Github, Linkedin, Mail, Gamepad2 } from "lucide-react";
 import { personalInfo } from "@/data/projects";
@@ -8,6 +9,7 @@ import { personalInfo } from "@/data/projects";
 export default function Hero() {
   return (
     <div className="container mx-auto px-6 max-w-4xl pt-20 md:pt-28 pb-10 md:pb-14">
+      <ScrollReveal>
       <p className="eyebrow">The full portfolio</p>
       <div className="mt-4 flex items-center gap-5 md:gap-7">
         <div className="relative w-20 h-20 md:w-28 md:h-28 shrink-0 rounded-full overflow-hidden border border-[#E5E4E0]">
@@ -64,6 +66,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      </ScrollReveal>
     </div>
   );
 }

@@ -12,10 +12,12 @@ import Contact from "@/components/Contact";
 import AskAI from "@/components/AskAI";
 import VisitorTicker from "@/components/VisitorTicker";
 import ChatwootWidget from "@/components/ChatwootWidget";
+import AmbientBackground from "@/components/AmbientBackground";
 
 export default function Home() {
   return (
     <SmoothScroll>
+      <AmbientBackground />
       <Navigation />
 
       {/* One-screen overview: the 10-second recruiter view */}

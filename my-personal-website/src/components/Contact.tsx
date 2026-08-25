@@ -1,9 +1,11 @@
 import { personalInfo } from "@/data/projects";
+import ScrollReveal from "./ScrollReveal";
 import { FileText, MessageCircle, Github, Linkedin, Mail } from "lucide-react";
 
 export default function Contact() {
   return (
     <div className="container mx-auto px-6 py-20 md:py-28 max-w-4xl">
+      <ScrollReveal>
       <p className="eyebrow">Contact</p>
       <h2 className="font-display text-3xl md:text-5xl font-bold mt-3 text-[#1A1D23] max-w-xl">
         Let&apos;s build something that{" "}
@@ -65,6 +67,7 @@ export default function Contact() {
         © {new Date().getFullYear()} Lee Chen Wei · built with Next.js ·
         designed with Claude Fable 5
       </p>
+      </ScrollReveal>
     </div>
   );
 }

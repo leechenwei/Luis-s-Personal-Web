@@ -1,8 +1,9 @@
 import Link from "next/link";
+import ScrollReveal from "./ScrollReveal";
 import { personalInfo } from "@/data/projects";
 
 /* The 10-second recruiter view — first page of the dossier.
-   Static, typography-first, no animation. */
+   Typography-first with gentle staggered reveals. */
 
 const a = "text-[#2456F0] underline underline-offset-[3px] decoration-[#2456F0]/30 hover:decoration-[#2456F0]";
 
@@ -18,25 +19,22 @@ const FLAGSHIPS = [
     n: "01",
     title: "Self-Evaluating Agentic RAG",
     line: "a chatbot that measures its own accuracy (Hit@k, MRR) every time I tune it",
-    href: "https://chenwei-rag.streamlit.app/",
-    cta: "live demo ↗",
-    external: true,
+    anchor: "#project-self-evaluating-rag",
+    cta: { label: "open live demo ↗", href: "https://chenwei-rag.streamlit.app/", external: true },
   },
   {
     n: "02",
     title: "Inside Assistant",
     line: "one AI on WhatsApp, Web and Lark with per-person vector memory — my team uses it daily",
-    href: "#projects",
-    cta: "see proof ↓",
-    external: false,
+    anchor: "#project-enterprise-ai-assistant",
+    cta: { label: "jump to project ↓", href: "#project-enterprise-ai-assistant", external: false },
   },
   {
     n: "03",
     title: "Steel Manufacturing ERP",
     line: "QR scan → FIFO costing on a real shop floor, 20 users a day",
-    href: "#projects",
-    cta: "see it running ↓",
-    external: false,
+    anchor: "#project-manufacturing-erp",
+    cta: { label: "jump to project ↓", href: "#project-manufacturing-erp", external: false },
   },
 ];
 
@@ -44,6 +42,7 @@ export default function Overview() {
   return (
     <section className="min-h-[100dvh] flex items-center border-b border-[#E5E4E0]">
       <div className="mx-auto w-full max-w-3xl px-6 pt-8 pb-24 md:py-14">
+        <ScrollReveal duration={0.5}>
         <p className="eyebrow">Portfolio · dossier</p>
         <h1 className="font-display text-4xl md:text-6xl font-bold mt-2 text-[#1A1D23]">
           Lee Chen Wei{" "}
@@ -59,8 +58,10 @@ export default function Overview() {
             {personalInfo.email}
           </a>
         </p>
+        </ScrollReveal>
 
         {/* Numbers — hairline table rows */}
+        <ScrollReveal delay={0.08} duration={0.5}>
         <div className="mt-8 md:mt-10 border-t border-[#E5E4E0]">
           {STATS.map((s) => (
             <div
@@ -76,39 +77,49 @@ export default function Overview() {
             </div>
           ))}
         </div>
+        </ScrollReveal>
 
         {/* Three flagships */}
+        <ScrollReveal delay={0.15} duration={0.5}>
         <p className="eyebrow mt-8 md:mt-10">Three things worth your click</p>
         <div className="mt-2">
           {FLAGSHIPS.map((f) => (
-            <a
+            <div
               key={f.n}
-              href={f.href}
-              {...(f.external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              className="group flex items-baseline gap-4 py-2.5 border-b border-[#E5E4E0] cursor-pointer"
+              className="flex items-baseline gap-4 py-2.5 border-b border-[#E5E4E0] hover:bg-white/70 transition-colors duration-300 -mx-2 px-2 rounded"
             >
               <span className="font-mono-ui text-[11px] text-[#9CA3AF] w-16 md:w-20 shrink-0 text-right">
                 {f.n}
               </span>
               <span className="min-w-0">
-                <span className="font-semibold text-[#1A1D23] group-hover:text-[#2456F0] transition-colors">
+                <a
+                  href={f.anchor}
+                  className="font-semibold text-[#1A1D23] hover:text-[#2456F0] transition-colors cursor-pointer"
+                >
                   {f.title}
-                </span>
+                </a>
                 <span className="text-[13px] md:text-sm text-[#6B7280]">
                   {" "}
                   — {f.line}.{" "}
                 </span>
-                <span className="font-mono-ui text-[11px] md:text-[12px] text-[#2456F0] whitespace-nowrap">
-                  {f.cta}
-                </span>
+                <a
+                  href={f.cta.href}
+                  {...(f.cta.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="font-mono-ui text-[11px] md:text-[12px] text-[#2456F0] whitespace-nowrap hover:underline underline-offset-[3px] cursor-pointer"
+                >
+                  {f.cta.label}
+                </a>
               </span>
-            </a>
+            </div>
           ))}
         </div>
 
+        </ScrollReveal>
+
         {/* Contact links */}
+        <ScrollReveal delay={0.22} duration={0.5}>
         <p className="mt-6 md:mt-8 text-sm md:text-[15px]">
           <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer" className={a}>
             Résumé (PDF)
@@ -144,6 +155,7 @@ export default function Overview() {
             </Link>
           </p>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

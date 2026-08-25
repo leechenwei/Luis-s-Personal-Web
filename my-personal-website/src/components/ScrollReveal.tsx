@@ -6,10 +6,10 @@ import type { ReactNode } from "react";
 type Direction = "up" | "down" | "left" | "right";
 
 const directionOffset: Record<Direction, { x: number; y: number }> = {
-  up: { x: 0, y: 40 },
-  down: { x: 0, y: -40 },
-  left: { x: 40, y: 0 },
-  right: { x: -40, y: 0 },
+  up: { x: 0, y: 24 },
+  down: { x: 0, y: -24 },
+  left: { x: 24, y: 0 },
+  right: { x: -24, y: 0 },
 };
 
 export default function ScrollReveal({
@@ -31,7 +31,7 @@ export default function ScrollReveal({
     <motion.div
       initial={{ opacity: 0, x: offset.x, y: offset.y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
         duration,
         delay,
