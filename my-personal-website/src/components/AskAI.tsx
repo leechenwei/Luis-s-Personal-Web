@@ -245,11 +245,11 @@ export default function AskAI() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2, duration: 0.5 }}
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#2456F0] text-white text-sm font-semibold shadow-lg hover:bg-[#1d47cc] transition-colors cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 p-3.5 sm:px-4 sm:py-3 rounded-full sm:rounded-2xl bg-[#2456F0] text-white text-sm font-semibold shadow-lg hover:bg-[#1d47cc] transition-colors cursor-pointer"
         aria-label="Ask AI about Luis"
       >
-        <Sparkles className="w-4 h-4" />
-        Ask AI about Luis
+        <Sparkles className="w-5 h-5 sm:w-4 sm:h-4" />
+        <span className="hidden sm:inline">Ask AI about Luis</span>
       </motion.button>
 
       {/* Panel */}

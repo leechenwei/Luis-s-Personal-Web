@@ -64,8 +64,7 @@ export default function Contact() {
       </div>
 
       <p className="mt-16 pt-6 border-t border-[#E5E4E0] font-mono-ui text-[11px] text-[#9CA3AF]">
-        © {new Date().getFullYear()} Lee Chen Wei · built with Next.js ·
-        designed with Claude Fable 5
+        © {new Date().getFullYear()} Lee Chen Wei · Selangor, Malaysia
       </p>
       </ScrollReveal>
     </div>

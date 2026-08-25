@@ -17,9 +17,11 @@ export default function ChatwootWidget() {
     if (document.getElementById("chatwoot-sdk")) return; // once per session
 
     // Left side — the Ask AI button owns bottom-right
+    const compact = window.matchMedia("(max-width: 640px)").matches;
     window.chatwootSettings = {
       position: "left",
-      type: "expanded_bubble",
+      // Icon-only on phones — two expanded pills don't fit side by side
+      type: compact ? "standard" : "expanded_bubble",
       launcherTitle: "Message Luis directly",
       darkMode: "auto",
     };

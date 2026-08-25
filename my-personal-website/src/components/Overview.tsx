@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import { personalInfo } from "@/data/projects";
@@ -43,21 +44,33 @@ export default function Overview() {
     <section className="min-h-[100dvh] flex items-center border-b border-[#E5E4E0]">
       <div className="mx-auto w-full max-w-3xl px-6 pt-8 pb-24 md:py-14">
         <ScrollReveal duration={0.5}>
-        <p className="eyebrow">Portfolio · dossier</p>
-        <h1 className="font-display text-4xl md:text-6xl font-bold mt-2 text-[#1A1D23]">
-          Lee Chen Wei{" "}
-          <span className="text-[#2456F0]">(Luis)</span>
-        </h1>
-        <p className="mt-3 text-base md:text-lg text-[#1A1D23]">
-          <strong className="font-semibold">Applied AI Engineer</strong> — I
-          build LLM systems that run in production, not in notebooks.
-        </p>
-        <p className="font-mono-ui text-[12px] md:text-[13px] text-[#6B7280] mt-2">
-          {personalInfo.location} · 2 weeks&apos; notice ·{" "}
-          <a href={`mailto:${personalInfo.email}`} className={a}>
-            {personalInfo.email}
-          </a>
-        </p>
+        <div className="flex items-start justify-between gap-5">
+          <div className="min-w-0">
+            <p className="eyebrow">Portfolio · dossier</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold mt-2 text-[#1A1D23]">
+              Lee Chen Wei{" "}
+              <span className="text-[#2456F0]">(Luis)</span>
+            </h1>
+            <p className="mt-3 text-base md:text-lg text-[#1A1D23]">
+              <strong className="font-semibold">Applied AI Engineer</strong> —
+              I build LLM systems that run in production, not in notebooks.
+            </p>
+            <p className="font-mono-ui text-[12px] md:text-[13px] text-[#6B7280] mt-2">
+              {personalInfo.location} · 2 weeks&apos; notice ·{" "}
+              <a href={`mailto:${personalInfo.email}`} className={a}>
+                {personalInfo.email}
+              </a>
+            </p>
+          </div>
+          <Image
+            src="/images/LCW.jpeg"
+            alt={personalInfo.name}
+            width={128}
+            height={128}
+            priority
+            className="w-[76px] h-[76px] md:w-32 md:h-32 rounded-full object-cover shrink-0 mt-1"
+          />
+        </div>
         </ScrollReveal>
 
         {/* Numbers — hairline table rows */}
