@@ -6,7 +6,7 @@ import { personalInfo } from "@/data/projects";
 /* The 10-second recruiter view — first page of the dossier.
    Typography-first with gentle staggered reveals. */
 
-const a = "text-[#2456F0] underline underline-offset-[3px] decoration-[#2456F0]/30 hover:decoration-[#2456F0]";
+const a = "text-[#2456F0] dark:text-[#7C97FF] underline underline-offset-[3px] decoration-[#2456F0]/30 dark:decoration-[#7C97FF]/40 hover:decoration-[#2456F0] dark:hover:decoration-[#7C97FF]";
 
 const STATS = [
   { v: "1 yr", l: "building production AI (+6 mo Dell internship)" },
@@ -41,21 +41,21 @@ const FLAGSHIPS = [
 
 export default function Overview() {
   return (
-    <section className="min-h-[100dvh] flex items-center border-b border-[#E5E4E0]">
+    <section className="min-h-[100dvh] flex items-center border-b border-[#E5E4E0] dark:border-[#252A36]">
       <div className="mx-auto w-full max-w-3xl px-6 pt-8 pb-24 md:py-14">
         <ScrollReveal duration={0.5}>
         <div className="flex items-start justify-between gap-5">
           <div className="min-w-0">
             <p className="eyebrow">Portfolio · dossier</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold mt-2 text-[#1A1D23]">
+            <h1 className="font-display text-4xl md:text-6xl font-bold mt-2 text-[#1A1D23] dark:text-[#F2F3F7]">
               Lee Chen Wei{" "}
-              <span className="text-[#2456F0]">(Luis)</span>
+              <span className="text-[#2456F0] dark:text-[#7C97FF]">(Luis)</span>
             </h1>
-            <p className="mt-3 text-base md:text-lg text-[#1A1D23]">
+            <p className="mt-3 text-base md:text-lg text-[#1A1D23] dark:text-[#F2F3F7]">
               <strong className="font-semibold">Applied AI Engineer</strong> —
               I build LLM systems that run in production, not in notebooks.
             </p>
-            <p className="font-mono-ui text-[12px] md:text-[13px] text-[#6B7280] mt-2">
+            <p className="font-mono-ui text-[12px] md:text-[13px] text-[#6B7280] dark:text-[#9AA1B2] mt-2">
               {personalInfo.location} · 2 weeks&apos; notice ·{" "}
               <a href={`mailto:${personalInfo.email}`} className={a}>
                 {personalInfo.email}
@@ -75,16 +75,16 @@ export default function Overview() {
 
         {/* Numbers — hairline table rows */}
         <ScrollReveal delay={0.08} duration={0.5}>
-        <div className="mt-8 md:mt-10 border-t border-[#E5E4E0]">
+        <div className="mt-8 md:mt-10 border-t border-[#E5E4E0] dark:border-[#252A36]">
           {STATS.map((s) => (
             <div
               key={s.v}
-              className="flex items-baseline gap-4 py-2 md:py-2.5 border-b border-[#E5E4E0]"
+              className="flex items-baseline gap-4 py-2 md:py-2.5 border-b border-[#E5E4E0] dark:border-[#252A36]"
             >
-              <span className="font-display text-xl md:text-2xl font-bold text-[#2456F0] w-16 md:w-20 shrink-0 text-right">
+              <span className="font-display text-xl md:text-2xl font-bold text-[#2456F0] dark:text-[#7C97FF] w-16 md:w-20 shrink-0 text-right">
                 {s.v}
               </span>
-              <span className="text-[13px] md:text-sm text-[#374151]">
+              <span className="text-[13px] md:text-sm text-[#374151] dark:text-[#C3C8D4]">
                 {s.l}
               </span>
             </div>
@@ -99,19 +99,19 @@ export default function Overview() {
           {FLAGSHIPS.map((f) => (
             <div
               key={f.n}
-              className="flex items-baseline gap-4 py-2.5 border-b border-[#E5E4E0] hover:bg-white/70 transition-colors duration-300 -mx-2 px-2 rounded"
+              className="flex items-baseline gap-4 py-2.5 border-b border-[#E5E4E0] dark:border-[#252A36] hover:bg-white/70 dark:hover:bg-white/[0.045] transition-colors duration-300 -mx-2 px-2 rounded"
             >
-              <span className="font-mono-ui text-[11px] text-[#9CA3AF] w-16 md:w-20 shrink-0 text-right">
+              <span className="font-mono-ui text-[11px] text-[#9CA3AF] dark:text-[#7A8194] w-16 md:w-20 shrink-0 text-right">
                 {f.n}
               </span>
               <span className="min-w-0">
                 <a
                   href={f.anchor}
-                  className="font-semibold text-[#1A1D23] hover:text-[#2456F0] transition-colors cursor-pointer"
+                  className="font-semibold text-[#1A1D23] dark:text-[#F2F3F7] hover:text-[#2456F0] dark:hover:text-[#7C97FF] transition-colors cursor-pointer"
                 >
                   {f.title}
                 </a>
-                <span className="text-[13px] md:text-sm text-[#6B7280]">
+                <span className="text-[13px] md:text-sm text-[#6B7280] dark:text-[#9AA1B2]">
                   {" "}
                   — {f.line}.{" "}
                 </span>
@@ -120,7 +120,7 @@ export default function Overview() {
                   {...(f.cta.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="font-mono-ui text-[11px] md:text-[12px] text-[#2456F0] whitespace-nowrap hover:underline underline-offset-[3px] cursor-pointer"
+                  className="font-mono-ui text-[11px] md:text-[12px] text-[#2456F0] dark:text-[#7C97FF] whitespace-nowrap hover:underline underline-offset-[3px] cursor-pointer"
                 >
                   {f.cta.label}
                 </a>
@@ -152,8 +152,8 @@ export default function Overview() {
         </p>
 
         {/* Gateway */}
-        <div className="mt-8 md:mt-10 pt-4 border-t border-[#E5E4E0]">
-          <p className="text-[13px] md:text-sm text-[#6B7280]">
+        <div className="mt-8 md:mt-10 pt-4 border-t border-[#E5E4E0] dark:border-[#252A36]">
+          <p className="text-[13px] md:text-sm text-[#6B7280] dark:text-[#9AA1B2]">
             That was the 10-second version. Below: 11 projects with screenshots
             and architecture diagrams, an AI that answers questions about me
             with citations — and a 3D world you can walk.
@@ -162,7 +162,7 @@ export default function Overview() {
             <a href="#hero" className={a}>
               scroll for the full portfolio ↓
             </a>
-            <span className="text-[#9CA3AF]">{"   ·   "}</span>
+            <span className="text-[#9CA3AF] dark:text-[#7A8194]">{"   ·   "}</span>
             <Link href="/3d" className={a}>
               enter the 3D world →
             </Link>

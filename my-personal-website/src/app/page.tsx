@@ -1,7 +1,7 @@
 "use client";
 
 import SmoothScroll from "@/components/SmoothScroll";
-import Navigation from "@/components/Navigation";
+import Header from "@/components/Header";
 import Overview from "@/components/Overview";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <SmoothScroll>
       <AmbientBackground />
-      <Navigation />
+      <Header />
 
       {/* One-screen overview: the 10-second recruiter view */}
       <section id="overview">

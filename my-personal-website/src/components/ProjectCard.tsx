@@ -98,18 +98,18 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <article
       id={`project-${project.id}`}
-      className="group grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 md:gap-6 py-7 md:py-9 border-b border-[#E5E4E0] scroll-mt-24 -mx-4 px-4 rounded-lg hover:bg-white/70 transition-colors duration-300"
+      className="group grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 md:gap-6 py-7 md:py-9 border-b border-[#E5E4E0] dark:border-[#252A36] scroll-mt-24 -mx-4 px-4 rounded-lg hover:bg-white/70 dark:hover:bg-white/[0.045] transition-colors duration-300"
     >
       {/* Margin: status + classification */}
       <div className="flex md:flex-col items-baseline md:items-start gap-3 md:gap-1.5">
         <p
           className={`font-mono-ui text-[12px] ${
-            s.live ? "text-[#0E7C66]" : "text-[#9CA3AF]"
+            s.live ? "text-[#0E7C66] dark:text-[#37D3A8]" : "text-[#9CA3AF] dark:text-[#7A8194]"
           }`}
         >
           {s.dot} {s.label}
         </p>
-        <p className="font-mono-ui text-[11px] uppercase tracking-wider text-[#9CA3AF]">
+        <p className="font-mono-ui text-[11px] uppercase tracking-wider text-[#9CA3AF] dark:text-[#7A8194]">
           {project.type === "company" ? "Inside Advisory" : "Personal"} ·{" "}
           {project.category}
         </p>
@@ -117,13 +117,13 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       {/* Content */}
       <div className="min-w-0">
-        <h3 className="font-display text-lg md:text-xl font-bold text-[#1A1D23] group-hover:text-[#2456F0] transition-colors duration-300">
+        <h3 className="font-display text-lg md:text-xl font-bold text-[#1A1D23] dark:text-[#F2F3F7] group-hover:text-[#2456F0] dark:group-hover:text-[#7C97FF] dark:hover:text-[#7C97FF] transition-colors duration-300">
           {project.title}
         </h3>
-        <p className="text-sm text-[#6B7280] mt-0.5">{project.tagline}</p>
+        <p className="text-sm text-[#6B7280] dark:text-[#9AA1B2] mt-0.5">{project.tagline}</p>
 
         {project.metrics && (
-          <p className="font-mono-ui text-[12px] text-[#2456F0] mt-2">
+          <p className="font-mono-ui text-[12px] text-[#2456F0] dark:text-[#7C97FF] mt-2">
             {project.metrics.join("   ·   ")}
           </p>
         )}
@@ -132,14 +132,14 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.highlights.map((h, i) => (
             <li
               key={i}
-              className="text-[13px] leading-relaxed text-[#374151] pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-[#D1D5DB]"
+              className="text-[13px] leading-relaxed text-[#374151] dark:text-[#C3C8D4] pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-[#D1D5DB] dark:before:text-[#3A4152] dark:text-[#3A4152]"
             >
               {h}
             </li>
           ))}
         </ul>
 
-        <p className="font-mono-ui text-[11px] text-[#9CA3AF] mt-3">
+        <p className="font-mono-ui text-[11px] text-[#9CA3AF] dark:text-[#7A8194] mt-3">
           {project.tech.join(" · ")}
         </p>
 
@@ -150,7 +150,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               <button
                 key={m.src}
                 onClick={() => setLightbox(i)}
-                className="group/thumb w-32 md:w-40 aspect-video overflow-hidden rounded-md border border-[#E5E4E0] hover:border-[#2456F0]/50 transition-colors cursor-zoom-in bg-white"
+                className="group/thumb w-32 md:w-40 aspect-video overflow-hidden rounded-md border border-[#E5E4E0] dark:border-[#252A36] hover:border-[#2456F0]/50 dark:hover:border-[#7C97FF]/50 transition-colors cursor-zoom-in bg-white dark:bg-[#161A24]"
                 aria-label={`View: ${m.alt}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -185,20 +185,20 @@ export default function ProjectCard({ project }: { project: Project }) {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#2456F0] underline underline-offset-[3px] decoration-[#2456F0]/30 hover:decoration-[#2456F0]"
+                className="text-[#2456F0] dark:text-[#7C97FF] underline underline-offset-[3px] decoration-[#2456F0]/30 dark:decoration-[#7C97FF]/40 hover:decoration-[#2456F0] dark:hover:decoration-[#7C97FF]"
               >
                 live demo ↗
               </a>
             )}
             {project.demo && project.link && (
-              <span className="text-[#D1D5DB]">{"   ·   "}</span>
+              <span className="text-[#D1D5DB] dark:text-[#3A4152]">{"   ·   "}</span>
             )}
             {project.link && (
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#2456F0] underline underline-offset-[3px] decoration-[#2456F0]/30 hover:decoration-[#2456F0]"
+                className="text-[#2456F0] dark:text-[#7C97FF] underline underline-offset-[3px] decoration-[#2456F0]/30 dark:decoration-[#7C97FF]/40 hover:decoration-[#2456F0] dark:hover:decoration-[#7C97FF]"
               >
                 github ↗
               </a>

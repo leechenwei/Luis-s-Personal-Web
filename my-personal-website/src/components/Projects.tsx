@@ -31,8 +31,8 @@ export default function Projects() {
               onClick={() => setActiveFilter(key)}
               className={`cursor-pointer transition-colors ${
                 activeFilter === key
-                  ? "text-[#2456F0] underline underline-offset-4"
-                  : "text-[#9CA3AF] hover:text-[#374151]"
+                  ? "text-[#2456F0] dark:text-[#7C97FF] underline underline-offset-4"
+                  : "text-[#9CA3AF] dark:text-[#7A8194] hover:text-[#374151] dark:text-[#C3C8D4] dark:hover:text-[#C3C8D4]"
               }`}
             >
               {label}
@@ -41,7 +41,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="mt-3 border-t border-[#1A1D23]">
+      <div className="mt-3 border-t border-[#1A1D23] dark:border-[#8B93A7]">
         {filtered.map((project) => (
           <ScrollReveal key={project.id}>
             <ProjectCard project={project} />

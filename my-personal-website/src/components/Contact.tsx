@@ -7,11 +7,11 @@ export default function Contact() {
     <div className="container mx-auto px-6 py-20 md:py-28 max-w-4xl">
       <ScrollReveal>
       <p className="eyebrow">Contact</p>
-      <h2 className="font-display text-3xl md:text-5xl font-bold mt-3 text-[#1A1D23] max-w-xl">
+      <h2 className="font-display text-3xl md:text-5xl font-bold mt-3 text-[#1A1D23] dark:text-[#F2F3F7] max-w-xl">
         Let&apos;s build something that{" "}
-        <span className="text-[#2456F0]">runs</span>.
+        <span className="text-[#2456F0] dark:text-[#7C97FF]">runs</span>.
       </h2>
-      <p className="mt-4 text-[15px] text-[#6B7280] max-w-md">
+      <p className="mt-4 text-[15px] text-[#6B7280] dark:text-[#9AA1B2] max-w-md">
         Open to Applied AI Engineer roles — 2 weeks&apos; notice. The fastest
         way to reach me is WhatsApp; the AI in the corner answers questions
         about me instantly.
@@ -29,7 +29,7 @@ export default function Contact() {
         </a>
         <a
           href={`mailto:${personalInfo.email}`}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E5E4E0] bg-white text-sm text-[#374151] hover:border-[#2456F0]/40 transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E5E4E0] dark:border-[#252A36] bg-white dark:bg-[#161A24] text-sm text-[#374151] dark:text-[#C3C8D4] hover:border-[#2456F0]/40 dark:border-[#7C97FF]/50 dark:hover:border-[#7C97FF]/50 transition-colors cursor-pointer"
         >
           <Mail className="w-4 h-4" />
           {personalInfo.email}
@@ -38,7 +38,7 @@ export default function Contact() {
           href={personalInfo.resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E5E4E0] bg-white text-sm text-[#374151] hover:border-[#2456F0]/40 transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E5E4E0] dark:border-[#252A36] bg-white dark:bg-[#161A24] text-sm text-[#374151] dark:text-[#C3C8D4] hover:border-[#2456F0]/40 dark:border-[#7C97FF]/50 dark:hover:border-[#7C97FF]/50 transition-colors cursor-pointer"
         >
           <FileText className="w-4 h-4" />
           Résumé
@@ -48,22 +48,22 @@ export default function Contact() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
-          className="p-2.5 rounded-lg border border-[#E5E4E0] bg-white hover:border-[#2456F0]/40 transition-colors cursor-pointer"
+          className="p-2.5 rounded-lg border border-[#E5E4E0] dark:border-[#252A36] bg-white dark:bg-[#161A24] hover:border-[#2456F0]/40 dark:border-[#7C97FF]/50 dark:hover:border-[#7C97FF]/50 transition-colors cursor-pointer"
         >
-          <Github className="w-4 h-4 text-[#374151]" />
+          <Github className="w-4 h-4 text-[#374151] dark:text-[#C3C8D4]" />
         </a>
         <a
           href={personalInfo.linkedin}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
-          className="p-2.5 rounded-lg border border-[#E5E4E0] bg-white hover:border-[#2456F0]/40 transition-colors cursor-pointer"
+          className="p-2.5 rounded-lg border border-[#E5E4E0] dark:border-[#252A36] bg-white dark:bg-[#161A24] hover:border-[#2456F0]/40 dark:border-[#7C97FF]/50 dark:hover:border-[#7C97FF]/50 transition-colors cursor-pointer"
         >
-          <Linkedin className="w-4 h-4 text-[#374151]" />
+          <Linkedin className="w-4 h-4 text-[#374151] dark:text-[#C3C8D4]" />
         </a>
       </div>
 
-      <p className="mt-16 pt-6 border-t border-[#E5E4E0] font-mono-ui text-[11px] text-[#9CA3AF]">
+      <p className="mt-16 pt-6 border-t border-[#E5E4E0] dark:border-[#252A36] font-mono-ui text-[11px] text-[#9CA3AF] dark:text-[#7A8194]">
         © {new Date().getFullYear()} Lee Chen Wei · Selangor, Malaysia
       </p>
       </ScrollReveal>

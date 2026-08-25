@@ -109,3 +109,14 @@ body {
   animation: blob-drift 26s ease-in-out infinite alternate;
   pointer-events: none;
 }
+
+/* Dark theme — the dossier at night */
+.dark {
+  --background: 222 22% 8%;
+  --foreground: 220 20% 95%;
+  --border: 222 14% 19%;
+  --muted-foreground: 220 10% 62%;
+}
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

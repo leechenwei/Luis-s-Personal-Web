@@ -58,6 +58,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="theme-color" content="#FAFAF8" />
+        {/* No-flash theme init: apply stored preference before paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.theme==="dark")document.documentElement.classList.add("dark")}catch(e){}`,
+          }}
+        />
       </head>
       <body className={`${inter.variable} ${grotesk.variable} font-sans`}>
         {children}
