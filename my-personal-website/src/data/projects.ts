@@ -36,7 +36,7 @@ export const personalInfo = {
   name: "Lee Chen Wei",
   alias: "Luis",
   title: "Applied AI Engineer",
-  subtitle: "AI Fresh Graduate",
+  subtitle: "Agent & Prompt Engineer @ Shopee Malaysia",
   location: "Selangor, Malaysia",
   email: "LuisLCW02@gmail.com",
   phone: "+60 16-219 3255",
@@ -44,7 +44,7 @@ export const personalInfo = {
   github: "https://github.com/leechenwei",
   linkedin: "https://www.linkedin.com/in/luislcw02/",
   resumeUrl: "/Lee_Chen_Wei_Resume.pdf",
-  bio: "I'm an Applied AI Engineer building production LLM-powered systems. I deployed a public Self-Evaluating Agentic RAG and shipped a multi-channel AI assistant with identity-scoped vector memory at Inside Advisory — turning agentic retrieval, automation, and full-stack engineering into tools that help SMEs digitalize and scale. Fresh graduate from University of Malaya — 2 weeks' notice period.",
+  bio: "I'm an Applied AI Engineer building production LLM-powered systems — currently Agent & Prompt Engineer at Shopee Malaysia. I deployed a public Self-Evaluating Agentic RAG and shipped a multi-channel AI assistant with identity-scoped vector memory at Inside Advisory — turning agentic retrieval, automation, and full-stack engineering into tools that businesses use daily. Computer Science (AI) graduate from University of Malaya.",
   education: {
     university: "University of Malaya",
     degree: "Bachelor of Computer Science (Artificial Intelligence)",
@@ -349,15 +349,25 @@ export const projects: Project[] = [
 
 export const experiences: Experience[] = [
   {
+    company: "Shopee Malaysia",
+    role: "Agent & Prompt Engineer",
+    period: "Sept 2026 — Present",
+    location: "Kuala Lumpur, Malaysia",
+    description: [
+      "Build and tune LLM agents and prompt pipelines for production Shopee systems",
+    ],
+    side: "right",
+  },
+  {
     company: "Inside Advisory Sdn Bhd",
     role: "Full-stack Developer & AI Engineer",
-    period: "Aug 2025 — Present",
+    period: "Aug 2025 — Sept 2026",
     location: "Puchong, Malaysia",
     description: [
       "Built 'Inside Assistant' — a production multi-channel AI system (WhatsApp / Web / Lark) on Next.js with identity-scoped vector memory using Supabase pgvector and OpenAI text-embedding-3-small; migrated the LLM backend from a self-hosted Claude proxy to BytePlus for cost efficiency, serving 8–10 internal users",
       "Prototyped 'AI Conversational Lead Intelligence' — a real-time WhatsApp webhook pipeline with multi-criteria LLM-based lead scoring and Groq Whisper voice/image transcription for CRM intelligence",
       "Delivered 3 client SaaS apps end-to-end on Next.js + Supabase (RM5k MRR) across AV/IoT, steel manufacturing, and education — an ERP with 10+ modules (20 daily users), a FIFO manufacturing system with QR-driven cutting operations, and a coding-school platform; also automated P&L / balance-sheet pipelines with n8n and Node/Express plus a live dashboard",
-      "Maintain 3 pre-existing production SaaS systems (pest control, fire safety, concrete manufacturing) — bug fixes, feature requests, user support, and performance triage across TypeScript / Node.js codebases",
+      "Maintained 3 pre-existing production SaaS systems (pest control, fire safety, concrete manufacturing) — bug fixes, feature requests, user support, and performance triage across TypeScript / Node.js codebases",
     ],
     side: "right",
   },

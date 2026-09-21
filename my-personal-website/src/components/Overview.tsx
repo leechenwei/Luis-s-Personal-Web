@@ -11,7 +11,7 @@ import { personalInfo } from "@/data/projects";
 const a = "text-[#2456F0] dark:text-[#7C97FF] underline underline-offset-[3px] decoration-[#2456F0]/30 dark:decoration-[#7C97FF]/40 hover:decoration-[#2456F0] dark:hover:decoration-[#7C97FF]";
 
 const STATS = [
-  { v: "1 yr", l: "building production AI (+6 mo Dell internship)" },
+  { v: "1+ yr", l: "building production AI (+6 mo Dell internship)" },
   { v: "11", l: "systems live — businesses pay for six" },
   { v: "RM5k", l: "monthly recurring revenue delivered" },
   { v: "8–10", l: "daily users on my AI assistant" },
@@ -58,7 +58,7 @@ export default function Overview() {
               I build LLM systems that run in production, not in notebooks.
             </p>
             <p className="font-mono-ui text-[12px] md:text-[13px] text-[#6B7280] dark:text-[#9AA1B2] mt-2">
-              {personalInfo.location} · 2 weeks&apos; notice ·{" "}
+              {personalInfo.location} · Agent &amp; Prompt Engineer @ Shopee ·{" "}
               <a href={`mailto:${personalInfo.email}`} className={a}>
                 {personalInfo.email}
               </a>

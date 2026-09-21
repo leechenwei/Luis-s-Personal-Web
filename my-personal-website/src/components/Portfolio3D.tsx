@@ -793,7 +793,7 @@ export default function Portfolio3D() {
         map: makePanelTexture({
           chip: "CONTACT",
           title: "Let's Build Something Together",
-          subtitle: "Open to Applied AI Engineer roles",
+          subtitle: "Agent & Prompt Engineer @ Shopee Malaysia",
           lines: [
             `• ${personalInfo.email}`,
             `• ${personalInfo.phone} (WhatsApp)`,

@@ -105,7 +105,7 @@ export default function OGImage() {
             }}
           />
           <span style={{ color: "#0E7C66" }}>
-            open to work — 2 weeks&apos; notice
+            Agent &amp; Prompt Engineer @ Shopee Malaysia
           </span>
         </div>
 

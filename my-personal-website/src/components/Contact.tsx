@@ -12,7 +12,7 @@ export default function Contact() {
         <span className="text-[#2456F0] dark:text-[#7C97FF]">runs</span>.
       </h2>
       <p className="mt-4 text-[15px] text-[#6B7280] dark:text-[#9AA1B2] max-w-md">
-        Open to Applied AI Engineer roles — 2 weeks&apos; notice. The fastest
+        Agent &amp; Prompt Engineer at Shopee Malaysia. The fastest
         way to reach me is WhatsApp; the AI in the corner answers questions
         about me instantly.
       </p>
